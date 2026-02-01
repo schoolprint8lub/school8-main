@@ -58,7 +58,7 @@
           <h2>{{ block.heading }}</h2>
           {% endif %}
           <div class="prose">
-            {{ block.content | safe }}
+            {{ block.content | markdownify | safe }}
           </div>
         </div>
         {% endif %}
@@ -76,7 +76,7 @@
               <img src="{{ block.image }}" alt="{{ block.alt }}" loading="lazy">
             </div>
             <div class="text-side prose">
-              {{ block.content | safe }}
+              {{ block.content | markdownify | safe }}
             </div>
           </div>
         </div>
@@ -332,7 +332,7 @@
           <h3>{{ block.heading }}</h3>
           {% endif %}
           <div class="prose">
-            {{ block.content | safe }}
+            {{ block.content | markdownify | safe }}
           </div>
         </div>
         {% endif %}
@@ -405,7 +405,7 @@
             <details class="faq-item">
               <summary class="faq-question">{{ item.question }}</summary>
               <div class="faq-answer prose">
-                {{ item.answer | safe }}
+                {{ item.answer | markdownify | safe }}
               </div>
             </details>
             {% endfor %}
