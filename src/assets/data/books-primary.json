@@ -1,0 +1,156 @@
+[
+    {
+        "title": "Українська мова. Буквар (1 клас, 1 частина)",
+        "author": "Вашуленко М. С., Вашуленко О. В.",
+        "grade": "1 клас",
+        "cover": "https://shkola.in.ua/wp-content/uploads/2018/09/bukvar-1-klas-vashulenko-2018-1.jpg",
+        "url": "https://shkola.in.ua/1175-bukvar-1-klas-vashulenko-2018-chastyna-1.html"
+    },
+    {
+        "title": "Українська мова. Буквар (1 клас, 2 частина)",
+        "author": "Вашуленко М. С., Вашуленко О. В.",
+        "grade": "1 клас",
+        "cover": "https://shkola.in.ua/wp-content/uploads/2018/09/bukvar-1-klas-vashulenko-2018-2.jpg",
+        "url": "https://shkola.in.ua/1176-bukvar-1-klas-vashulenko-2018-chastyna-2.html"
+    },
+    {
+        "title": "Англійська мова Start Up! (1 клас)",
+        "author": "Доценко І. В., Євчук О. В., Губарєва С. С.",
+        "grade": "1 клас",
+        "cover": "https://shkola.in.ua/wp-content/uploads/2018/09/anhliiska-mova-1-klas-dotsenko-2018.jpg",
+        "url": "https://shkola.in.ua/1167-anhliiska-mova-1-klas-dotsenko-2018.html"
+    },
+    {
+        "title": "Математика (1 клас)",
+        "author": "Скворцова С. О., Онопрієнко О. В.",
+        "grade": "1 клас",
+        "cover": "https://shkola.in.ua/wp-content/uploads/2018/09/matematyka-1-klas-skvortsova-2023.jpg",
+        "url": "https://shkola.in.ua/506-matematyka-1-klas-skvortsova-2023.html"
+    },
+    {
+        "title": "Я досліджую світ (1 клас)",
+        "author": "Грущинська І. В., Хитра З. М.",
+        "grade": "1 клас",
+        "cover": "https://shkola.in.ua/wp-content/uploads/2018/09/ya-doslidzhuiu-svit-1-klas-hrushchynska-2018-1.jpg",
+        "url": "https://shkola.in.ua/1202-ya-doslidzhuiu-svit-1-klas-hrushchynska-2018.html"
+    },
+    {
+        "title": "Мистецтво (1 клас)",
+        "author": "Калініченко О. В., Аристова Л. С.",
+        "grade": "1 клас",
+        "cover": "https://shkola.in.ua/wp-content/uploads/2018/09/mystetstvo-1-klas-kalinichenko-2018.jpg",
+        "url": "https://shkola.in.ua/1223-mystetstvo-1-klas-kalinichenko-2018.html"
+    },
+    {
+        "title": "Українська мова та читання (2 клас)",
+        "author": "Пономарьова К. І.",
+        "grade": "2 клас",
+        "cover": "https://shkola.in.ua/wp-content/uploads/2019/07/ukrainska-mova-2-klas-ponomarova-2019-1.jpg",
+        "url": "https://shkola.in.ua/5-ukrainska-mova-2-klas-ponomarova-2019.html"
+    },
+    {
+        "title": "Англійська мова Start Up! (2 клас)",
+        "author": "Губарєва С. С., Павліченко О. М.",
+        "grade": "2 клас",
+        "cover": "https://shkola.in.ua/wp-content/uploads/2019/08/anhliiska-mova-2-klas-hubaryeva-2019.jpg",
+        "url": "https://shkola.in.ua/637-anhliiska-mova-2-klas-hubaryeva-2019.html"
+    },
+    {
+        "title": "Математика (2 клас)",
+        "author": "Скворцова С. О., Онопрієнко О. В.",
+        "grade": "2 клас",
+        "cover": "https://shkola.in.ua/wp-content/uploads/2019/08/matematyka-2-klas-skvortsova-2019.jpg",
+        "url": "https://shkola.in.ua/623-matematyka-2-klas-skvortsova-2019.html"
+    },
+    {
+        "title": "Я досліджую світ (2 клас)",
+        "author": "Грущинська І. В., Хитра З. М.",
+        "grade": "2 клас",
+        "cover": "https://shkola.in.ua/wp-content/uploads/2019/08/ya-doslidzhuiu-svit-2-klas-hrushchynska-2019-1.jpg",
+        "url": "https://shkola.in.ua/683-ya-doslidzhuiu-svit-2-klas-hrushchynska-2019.html"
+    },
+    {
+        "title": "Мистецтво (2 клас)",
+        "author": "Калініченко О. В., Аристова Л. С.",
+        "grade": "2 клас",
+        "cover": "https://shkola.in.ua/wp-content/uploads/2019/08/mystetstvo-2-klas-kalinichenko-2019.jpg",
+        "url": "https://shkola.in.ua/715-mystetstvo-2-klas-kalinichenko-2019.html"
+    },
+    {
+        "title": "Українська мова та читання (3 клас)",
+        "author": "Пономарьова К. І., Гайова Л. А.",
+        "grade": "3 клас",
+        "cover": "https://shkola.in.ua/wp-content/uploads/2020/06/ukrainska-mova-3-klas-ponomarova-2020-1.jpg",
+        "url": "https://shkola.in.ua/1564-ukrainska-mova-3-klas-ponomarova-2020.html"
+    },
+    {
+        "title": "Англійська мова Start Up! (3 клас)",
+        "author": "Губарєва С. С., Павліченко О. М.",
+        "grade": "3 клас",
+        "cover": "https://shkola.in.ua/wp-content/uploads/2020/07/anhliiska-mova-3-klas-hubarieva-2020.jpg",
+        "url": "https://shkola.in.ua/1760-anhliiska-mova-3-klas-hubarieva-2020.html"
+    },
+    {
+        "title": "Математика (3 клас)",
+        "author": "Скворцова С. О., Онопрієнко О. В.",
+        "grade": "3 клас",
+        "cover": "https://shkola.in.ua/wp-content/uploads/2020/07/matematyka-3-klas-skvortsova-2020-1.jpg",
+        "url": "https://shkola.in.ua/1749-matematyka-3-klas-skvortsova-2020.html"
+    },
+    {
+        "title": "Я досліджую світ (3 клас)",
+        "author": "Грущинська І. В., Хитра З. М.",
+        "grade": "3 клас",
+        "cover": "https://shkola.in.ua/wp-content/uploads/2020/07/ya-doslidzhuiu-svit-3-klas-hrushchynska-2020-1.jpg",
+        "url": "https://shkola.in.ua/1779-ya-doslidzhuiu-svit-3-klas-hrushchynska-2020.html"
+    },
+    {
+        "title": "Мистецтво (3 клас)",
+        "author": "Калініченко О. В., Аристова Л. С.",
+        "grade": "3 клас",
+        "cover": "https://shkola.in.ua/wp-content/uploads/2020/08/mystetstvo-3-klas-kalinichenko-2020.jpg",
+        "url": "https://shkola.in.ua/1802-mystetstvo-3-klas-kalinichenko-2020.html"
+    },
+    {
+        "title": "Українська мова та читання (4 клас)",
+        "author": "Пономарьова К. І., Гайова Л. А.",
+        "grade": "4 клас",
+        "cover": "https://shkola.in.ua/wp-content/uploads/2021/05/ukrainska-mova-4-klas-ponomarova-2021-1.jpg",
+        "url": "https://shkola.in.ua/2256-ukrainska-mova-4-klas-ponomarova-2021.html"
+    },
+    {
+        "title": "Англійська мова Start Up! (4 клас)",
+        "author": "Губарєва С. С., Павліченко О. М.",
+        "grade": "4 клас",
+        "cover": "https://shkola.in.ua/wp-content/uploads/2021/05/anhliiska-mova-4-klas-hubarieva-2021.jpg",
+        "url": "https://shkola.in.ua/2332-anhliiska-mova-4-klas-hubarieva-2021.html"
+    },
+    {
+        "title": "Математика (4 клас)",
+        "author": "Скворцова С. О., Онопрієнко О. В.",
+        "grade": "4 клас",
+        "cover": "https://shkola.in.ua/wp-content/uploads/2021/05/matematyka-4-klas-skvortsova-2021-1.jpg",
+        "url": "https://shkola.in.ua/2290-matematyka-4-klas-skvortsova-2021.html"
+    },
+    {
+        "title": "Я досліджую світ (4 клас)",
+        "author": "Грущинська І. В., Хитра З. М.",
+        "grade": "4 клас",
+        "cover": "https://shkola.in.ua/wp-content/uploads/2021/06/ya-doslidzhuiu-svit-4-klas-hrushchynska-2021-1.jpg",
+        "url": "https://shkola.in.ua/2347-ya-doslidzhuiu-svit-4-klas-hrushchynska-2021.html"
+    },
+    {
+        "title": "Інформатика (4 клас)",
+        "author": "Коршунова О. В.",
+        "grade": "4 клас",
+        "cover": "https://shkola.in.ua/wp-content/uploads/2021/06/informatyka-4-klas-korshunova-2021.jpg",
+        "url": "https://shkola.in.ua/2381-informatyka-4-klas-korshunova-2021.html"
+    },
+    {
+        "title": "Мистецтво (4 клас)",
+        "author": "Калініченко О. В., Аристова Л. С.",
+        "grade": "4 клас",
+        "cover": "https://shkola.in.ua/wp-content/uploads/2021/06/mystetstvo-4-klas-kalinichenko-2021.jpg",
+        "url": "https://shkola.in.ua/2403-mystetstvo-4-klas-kalinichenko-2021.html"
+    }
+]

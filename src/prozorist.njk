@@ -1,0 +1,41 @@
+---
+title: "Прозорість та відкритість"
+description: "Інформація про прозорість діяльності Української класичної гімназії."
+layout: "layouts/base.njk"
+bodyClass: "inner-page"
+---
+
+<section class="section">
+  <div class="container">
+    <h1 class="page-title">Прозорість та інформаційна відкритість</h1>
+    <div class="links-container">
+      <a href="/documents/" class="doc-link"><span class="doc-icon">📜</span> Статутні документи закладу</a>
+      <a href="#" class="doc-link" id="openReports"><span class="doc-icon">📊</span> Звіти директора гімназії <span class="report-note">(Натисніть для вибору)</span></a>
+      <a href="/atestacia/" class="doc-link"><span class="doc-icon">🎓</span> Атестація педагогічних працівників</a>
+      <a href="/samoanaliz/" class="doc-link"><span class="doc-icon">🔍</span> Самоаналіз діяльності</a>
+    </div>
+  </div>
+</section>
+
+<div class="modal-overlay" id="reportsModal">
+  <div class="modal-window">
+    <span class="close-modal" id="closeModal">&times;</span>
+    <h3 class="modal-title">Оберіть рік звіту</h3>
+    <a href="/assets/docs/zvit2025.pdf" target="_blank" class="year-btn">2025 рік</a>
+    <a href="/assets/docs/zvit2024.pdf" target="_blank" class="year-btn">2024 рік</a>
+    <a href="/assets/docs/zvit2023.pdf" target="_blank" class="year-btn">2023 рік</a>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const modal = document.getElementById('reportsModal');
+    const openBtn = document.getElementById('openReports');
+    const closeBtn = document.getElementById('closeModal');
+    if (openBtn && modal && closeBtn) {
+      openBtn.addEventListener('click', (e) => { e.preventDefault(); modal.classList.add('open'); });
+      closeBtn.addEventListener('click', () => { modal.classList.remove('open'); });
+      modal.addEventListener('click', (e) => { if (e.target === modal) modal.classList.remove('open'); });
+    }
+  });
+</script>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- 
+    Адмін-панель Decap CMS для шкільного сайту
+    
+    Ця сторінка завантажує Decap CMS, який дозволяє
+    вчителям редагувати контент без знання HTML.
+    
+    Для роботи потрібна авторизація через Netlify Identity
+    або інший бекенд, налаштований у config.yml
+  -->
+  <title>Адмін-панель | Шкільний сайт</title>
+  
+  <!-- Підключення Netlify Identity Widget для авторизації -->
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+</head>
+<body>
+  <!-- 
+    Основний скрипт Decap CMS
+    Завантажує інтерфейс адміністратора
+  -->
+  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+</body>
+</html>

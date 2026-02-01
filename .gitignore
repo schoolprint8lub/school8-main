@@ -1,0 +1,19 @@
+# Технічні файли
+node_modules/
+_site/
+
+# Системні файли
+.DS_Store
+Thumbs.db
+
+# Логи
+*.log
+npm-debug.log*
+
+# Редактори
+.vscode/
+.idea/
+
+# Тимчасові файли
+*.tmp
+*.temp

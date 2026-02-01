@@ -1,0 +1,20 @@
+{
+  "name": "school-website",
+  "version": "1.0.0",
+  "description": "Шкільний сайт на базі Eleventy та Decap CMS",
+  "scripts": {
+    "start": "eleventy --serve",
+    "build": "eleventy"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0"
+  },
+  "keywords": [
+    "eleventy",
+    "decap-cms",
+    "school",
+    "jamstack"
+  ],
+  "author": "",
+  "license": "MIT"
+}

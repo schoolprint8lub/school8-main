@@ -1,0 +1,860 @@
+# ============================================
+# Конфігурація Decap CMS для Української класичної гімназії
+# ============================================
+# 
+# Цей файл налаштовує:
+# - Бекенд для зберігання даних (Git)
+# - Папку для завантаження медіафайлів
+# - Колекції контенту (сторінки, налаштування)
+# - Конструктор сторінок з блоками-компонентами
+#
+# ВАЖЛИВО: Для роботи git-gateway потрібно 
+# налаштувати Netlify Identity на вашому сайті
+# ============================================
+
+# Налаштування бекенду
+# ЛОКАЛЬНИЙ РЕЖИМ (вимкнено для продакшену)
+backend:
+  name: git-gateway
+  branch: main
+
+# Для локального тестування розкоментуйте:
+# local_backend:
+#   url: http://localhost:8082/api/v1
+
+# Папка для завантаження зображень та медіафайлів
+media_folder: "src/assets/img/uploads"
+public_folder: "/assets/img/uploads"
+
+# Локалізація інтерфейсу CMS (українська)
+locale: "uk"
+
+# ============================================
+# КОЛЕКЦІЇ КОНТЕНТУ
+# ============================================
+
+collections:
+  # ------------------------------------------
+  # КОЛЕКЦІЯ: Сторінки сайту
+  # ------------------------------------------
+  # Основна колекція для створення/редагування сторінок
+  # з використанням конструктора блоків (Page Builder)
+  
+  - name: "site_pages"
+    label: "📄 Сторінки"
+    label_singular: "Сторінка"
+    folder: "src/pages"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+    
+    fields:
+      # Заголовок сторінки (відображається в браузері та на сторінці)
+      - label: "Заголовок сторінки"
+        name: "title"
+        widget: "string"
+        hint: "Цей заголовок буде відображатися у вкладці браузера та на сторінці"
+      
+      # SEO опис сторінки
+      - label: "Опис для пошукових систем (SEO)"
+        name: "description"
+        widget: "text"
+        required: false
+        hint: "Короткий опис сторінки для Google (до 160 символів)"
+      
+      # Вибір шаблону
+      - label: "Шаблон"
+        name: "layout"
+        widget: "select"
+        options:
+          - label: "Стандартна сторінка"
+            value: "layouts/page.njk"
+          - label: "Базовий шаблон"
+            value: "layouts/base.njk"
+        default: "layouts/page.njk"
+      
+      # CSS клас для body
+      - label: "CSS клас сторінки"
+        name: "bodyClass"
+        widget: "string"
+        default: "inner-page"
+        required: false
+        hint: "Зазвичай 'inner-page' для внутрішніх сторінок"
+      
+      # ========================================
+      # КОНСТРУКТОР СТОРІНОК (PAGE BUILDER)
+      # ========================================
+      
+      - label: "🧱 Блоки контенту"
+        name: "blocks"
+        widget: "list"
+        hint: "Додавайте блоки як цеглинки конструктора. Перетягуйте для зміни порядку."
+        
+        # Типи блоків (variable types)
+        types: &content_blocks
+          
+          # ----------------------------------
+          # БЛОК: Текстовий блок
+          # ----------------------------------
+          - label: "📝 Текстовий блок"
+            name: "text_block"
+            widget: "object"
+            summary: "📝 {{fields.heading}}"
+            fields:
+              - label: "Заголовок блоку"
+                name: "heading"
+                widget: "string"
+                required: false
+                hint: "Необов'язковий заголовок для секції"
+              
+              - label: "Текст"
+                name: "content"
+                widget: "markdown"
+                hint: "Використовуйте Markdown: **жирний**, *курсив*, списки, посилання"
+          
+          # ----------------------------------
+          # БЛОК: Зображення + Текст
+          # ----------------------------------
+          - label: "🖼️ Зображення з текстом"
+            name: "image_text_block"
+            widget: "object"
+            summary: "🖼️ {{fields.heading}} ({{fields.alignment}})"
+            fields:
+              - label: "Заголовок"
+                name: "heading"
+                widget: "string"
+                required: false
+              
+              - label: "Зображення"
+                name: "image"
+                widget: "image"
+                hint: "Завантажте або оберіть зображення з бібліотеки"
+              
+              - label: "Альтернативний текст"
+                name: "alt"
+                widget: "string"
+                hint: "Опис зображення для SEO та доступності"
+              
+              - label: "Текст"
+                name: "content"
+                widget: "markdown"
+              
+              - label: "Розташування зображення"
+                name: "alignment"
+                widget: "select"
+                options:
+                  - label: "Зображення ліворуч"
+                    value: "left"
+                  - label: "Зображення праворуч"
+                    value: "right"
+                default: "left"
+          
+          # ----------------------------------
+          # БЛОК: Галерея зображень
+          # ----------------------------------
+          - label: "🎴 Галерея зображень"
+            name: "gallery_block"
+            widget: "object"
+            summary: "🎴 Галерея: {{fields.heading}}"
+            fields:
+              - label: "Заголовок галереї"
+                name: "heading"
+                widget: "string"
+                required: false
+              
+              - label: "Опис"
+                name: "description"
+                widget: "text"
+                required: false
+              
+              - label: "Зображення"
+                name: "images"
+                widget: "list"
+                fields:
+                  - label: "Зображення"
+                    name: "src"
+                    widget: "image"
+                  
+                  - label: "Підпис"
+                    name: "caption"
+                    widget: "string"
+                    required: false
+                  
+                  - label: "Альтернативний текст"
+                    name: "alt"
+                    widget: "string"
+          
+          # ----------------------------------
+          # БЛОК: Відео YouTube
+          # ----------------------------------
+          - label: "🎬 Відео YouTube"
+            name: "video_block"
+            widget: "object"
+            summary: "🎬 Відео: {{fields.title}}"
+            fields:
+              - label: "Назва відео"
+                name: "title"
+                widget: "string"
+              
+              - label: "ID відео YouTube"
+                name: "youtube_id"
+                widget: "string"
+                hint: "Тільки ID! Наприклад: dQw4w9WgXcQ (з youtube.com/watch?v=dQw4w9WgXcQ)"
+              
+              - label: "Опис"
+                name: "description"
+                widget: "text"
+                required: false
+
+          # ----------------------------------
+          # БЛОК: Картка з посиланням
+          # ----------------------------------
+          - label: "🃏 Картка з кнопкою"
+            name: "card_block"
+            widget: "object"
+            summary: "🃏 {{fields.heading}}"
+            fields:
+              - label: "Іконка (емодзі)"
+                name: "icon"
+                widget: "string"
+                required: false
+                hint: "Наприклад: 📜, 📚, 🎓"
+              
+              - label: "Заголовок"
+                name: "heading"
+                widget: "string"
+              
+              - label: "Текст"
+                name: "text"
+                widget: "text"
+              
+              - label: "Текст кнопки"
+                name: "button_text"
+                widget: "string"
+                required: false
+              
+              - label: "Посилання кнопки"
+                name: "button_url"
+                widget: "string"
+                required: false
+              
+              - label: "Відкривати в новій вкладці"
+                name: "button_target"
+                widget: "select"
+                options:
+                  - label: "Так"
+                    value: "_blank"
+                  - label: "Ні"
+                    value: "_self"
+                default: "_self"
+                required: false
+              
+              - label: "Примітка під кнопкою"
+                name: "note"
+                widget: "string"
+                required: false
+              
+              - label: "CSS клас картки"
+                name: "card_class"
+                widget: "string"
+                required: false
+                hint: "Наприклад: history-card"
+
+          # ----------------------------------
+          # БЛОК: Контактна інформація
+          # ----------------------------------
+          - label: "📞 Контакти"
+            name: "contacts_block"
+            widget: "object"
+            summary: "📞 Контактна інформація"
+            fields:
+              - label: "Назва організації"
+                name: "organization_name"
+                widget: "text"
+                hint: "Можна використовувати <br> для переносу рядка"
+              
+              - label: "Адреса"
+                name: "address"
+                widget: "text"
+                required: false
+              
+              - label: "Телефон"
+                name: "phone"
+                widget: "string"
+                required: false
+              
+              - label: "Email"
+                name: "email"
+                widget: "string"
+                required: false
+              
+              - label: "Пошуковий запит для карти"
+                name: "map_query"
+                widget: "string"
+                required: false
+                hint: "Наприклад: Лубенська загальноосвітня школа №8"
+
+          # ----------------------------------
+          # БЛОК: Сітка карток (вчителі, персонал)
+          # ----------------------------------
+          - label: "👥 Сітка карток"
+            name: "cards_grid_block"
+            widget: "object"
+            summary: "👥 {{fields.heading}} ({{fields.cards.length}} карток)"
+            fields:
+              - label: "Заголовок секції"
+                name: "heading"
+                widget: "string"
+                required: false
+              
+              - label: "Картки"
+                name: "cards"
+                widget: "list"
+                fields:
+                  - label: "Фото"
+                    name: "image"
+                    widget: "image"
+                    required: false
+                  
+                  - label: "Ім'я"
+                    name: "name"
+                    widget: "string"
+                  
+                  - label: "Посада"
+                    name: "position"
+                    widget: "string"
+                    required: false
+                  
+                  - label: "Опис"
+                    name: "description"
+                    widget: "text"
+                    required: false
+
+          # ----------------------------------
+          # БЛОК: Facebook віджет
+          # ----------------------------------
+          - label: "📘 Facebook блок"
+            name: "facebook_block"
+            widget: "object"
+            summary: "📘 Facebook новини"
+            fields:
+              - label: "Заголовок"
+                name: "heading"
+                widget: "string"
+                default: "Будьте в курсі подій!"
+              
+              - label: "Вступний текст"
+                name: "intro_text"
+                widget: "text"
+              
+              - label: "Особливості (список)"
+                name: "features"
+                widget: "list"
+                field:
+                  label: "Пункт"
+                  name: "feature"
+                  widget: "string"
+              
+              - label: "URL Facebook сторінки"
+                name: "facebook_url"
+                widget: "string"
+                default: "https://www.facebook.com/p/%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D1%81%D1%8C%D0%BA%D0%B0-%D0%BA%D0%BB%D0%B0%D1%81%D0%B8%D1%87%D0%BD%D0%B0-%D0%B3%D1%96%D0%BC%D0%BD%D0%B0%D0%B7%D1%96%D1%8F-100076001883917/"
+
+          # ----------------------------------
+          # БЛОК: Таблиця
+          # ----------------------------------
+          - label: "📋 Таблиця"
+            name: "table_block"
+            widget: "object"
+            summary: "📋 {{fields.heading}}"
+            fields:
+              - label: "Заголовок таблиці"
+                name: "heading"
+                widget: "string"
+                required: false
+              
+              - label: "Опис"
+                name: "description"
+                widget: "text"
+                required: false
+              
+              - label: "Заголовки колонок"
+                name: "columns"
+                widget: "list"
+                field:
+                  label: "Назва колонки"
+                  name: "column"
+                  widget: "string"
+              
+              - label: "Рядки таблиці"
+                name: "rows"
+                widget: "list"
+                field:
+                  label: "Клітинки (через |)"
+                  name: "cells"
+                  widget: "string"
+                  hint: "Введіть значення клітинок через | (наприклад: 1 урок | 08:30 - 09:15 | 10 хв)"
+
+          # ----------------------------------
+          # БЛОК: Список документів
+          # ----------------------------------
+          - label: "📑 Список документів"
+            name: "documents_block"
+            widget: "object"
+            summary: "📑 {{fields.heading}} ({{fields.documents.length}} док.)"
+            fields:
+              - label: "Заголовок секції"
+                name: "heading"
+                widget: "string"
+                required: false
+              
+              - label: "Документи"
+                name: "documents"
+                widget: "list"
+                fields:
+                  - label: "Іконка (емодзі)"
+                    name: "icon"
+                    widget: "string"
+                    default: "📄"
+                    hint: "📄 📜 📋 📊 📁"
+                  
+                  - label: "Назва документа"
+                    name: "title"
+                    widget: "string"
+                  
+                  - label: "Посилання"
+                    name: "url"
+                    widget: "string"
+                    hint: "Посилання на Google Drive або файл"
+                  
+                  - label: "Відкривати в новій вкладці"
+                    name: "external"
+                    widget: "boolean"
+                    default: true
+
+          # ----------------------------------
+          # БЛОК: Інформаційне повідомлення
+          # ----------------------------------
+          - label: "⚠️ Інформаційний блок"
+            name: "alert_block"
+            widget: "object"
+            summary: "⚠️ {{fields.alert_type}}: {{fields.heading}}"
+            fields:
+              - label: "Тип повідомлення"
+                name: "alert_type"
+                widget: "select"
+                options:
+                  - label: "🔵 Інформація (синій)"
+                    value: "info"
+                  - label: "🟠 Увага (помаранчевий)"
+                    value: "warning"
+                  - label: "🟢 Успіх (зелений)"
+                    value: "success"
+                  - label: "🔴 Важливо (червоний)"
+                    value: "danger"
+                default: "info"
+              
+              - label: "Заголовок"
+                name: "heading"
+                widget: "string"
+                required: false
+              
+              - label: "Текст"
+                name: "content"
+                widget: "markdown"
+
+          # ----------------------------------
+          # БЛОК: Список посилань
+          # ----------------------------------
+          - label: "🔗 Список посилань"
+            name: "links_block"
+            widget: "object"
+            summary: "🔗 {{fields.heading}} ({{fields.links.length}} посил.)"
+            fields:
+              - label: "Заголовок секції"
+                name: "heading"
+                widget: "string"
+                required: false
+              
+              - label: "Посилання"
+                name: "links"
+                widget: "list"
+                fields:
+                  - label: "Іконка (емодзі)"
+                    name: "icon"
+                    widget: "string"
+                    default: "🔗"
+                  
+                  - label: "Назва"
+                    name: "title"
+                    widget: "string"
+                  
+                  - label: "Опис"
+                    name: "description"
+                    widget: "string"
+                    required: false
+                  
+                  - label: "URL"
+                    name: "url"
+                    widget: "string"
+                  
+                  - label: "Зовнішнє посилання"
+                    name: "external"
+                    widget: "boolean"
+                    default: false
+
+          # ----------------------------------
+          # БЛОК: Розклад уроків
+          # ----------------------------------
+          - label: "📅 Розклад уроків"
+            name: "schedule_block"
+            widget: "object"
+            summary: "📅 Розклад: {{fields.heading}}"
+            fields:
+              - label: "Заголовок"
+                name: "heading"
+                widget: "string"
+                default: "Режим роботи"
+              
+              - label: "Уроки"
+                name: "lessons"
+                widget: "list"
+                fields:
+                  - label: "Номер уроку"
+                    name: "number"
+                    widget: "string"
+                    hint: "Наприклад: 1 урок"
+                  
+                  - label: "Час"
+                    name: "time"
+                    widget: "string"
+                    hint: "Наприклад: 08:30 – 09:15"
+                  
+                  - label: "Перерва"
+                    name: "break"
+                    widget: "string"
+                    hint: "Наприклад: 10 хв"
+                    required: false
+
+          # ----------------------------------
+          # БЛОК: FAQ (Питання-відповідь)
+          # ----------------------------------
+          - label: "❓ FAQ (Питання-відповідь)"
+            name: "faq_block"
+            widget: "object"
+            summary: "❓ {{fields.heading}} ({{fields.items.length}} питань)"
+            fields:
+              - label: "Заголовок секції"
+                name: "heading"
+                widget: "string"
+                default: "Часті запитання"
+              
+              - label: "Питання та відповіді"
+                name: "items"
+                widget: "list"
+                fields:
+                  - label: "Питання"
+                    name: "question"
+                    widget: "string"
+                  
+                  - label: "Відповідь"
+                    name: "answer"
+                    widget: "markdown"
+
+          # ----------------------------------
+          # БЛОК: Гуртки та секції
+          # ----------------------------------
+          - label: "🎨 Гуртки та секції"
+            name: "clubs_block"
+            widget: "object"
+            summary: "🎨 {{fields.heading}} ({{fields.clubs.length}} гуртків)"
+            fields:
+              - label: "Заголовок секції"
+                name: "heading"
+                widget: "string"
+                default: "Гуртки та секції"
+              
+              - label: "Гуртки"
+                name: "clubs"
+                widget: "list"
+                fields:
+                  - label: "Назва гуртка"
+                    name: "name"
+                    widget: "string"
+                  
+                  - label: "Іконка (емодзі)"
+                    name: "icon"
+                    widget: "string"
+                    default: "🎨"
+                  
+                  - label: "Вікова категорія"
+                    name: "age"
+                    widget: "string"
+                    hint: "Наприклад: 1-4 класи"
+                  
+                  - label: "Розклад занять"
+                    name: "schedule"
+                    widget: "string"
+                    required: false
+                  
+                  - label: "Керівник"
+                    name: "leader"
+                    widget: "string"
+                    required: false
+                  
+                  - label: "Опис"
+                    name: "description"
+                    widget: "text"
+                    required: false
+
+          # ----------------------------------
+          # БЛОК: Навчальні предмети
+          # ----------------------------------
+          - label: "📚 Навчальні предмети"
+            name: "subjects_block"
+            widget: "object"
+            summary: "📚 {{fields.heading}}"
+            fields:
+              - label: "Заголовок"
+                name: "heading"
+                widget: "string"
+              
+              - label: "Групи предметів"
+                name: "groups"
+                widget: "list"
+                fields:
+                  - label: "Назва групи"
+                    name: "title"
+                    widget: "string"
+                    hint: "Наприклад: 1-2 класи"
+                  
+                  - label: "Предмети (по одному на рядок)"
+                    name: "subjects"
+                    widget: "list"
+                    field:
+                      label: "Предмет"
+                      name: "subject"
+                      widget: "string"
+
+          # ----------------------------------
+          # БЛОК: Кадровий склад (таблиця)
+          # ----------------------------------
+          - label: "👔 Кадровий склад"
+            name: "staff_table_block"
+            widget: "object"
+            summary: "👔 Кадровий склад"
+            fields:
+              - label: "Заголовок"
+                name: "heading"
+                widget: "string"
+                default: "Кадровий склад"
+              
+              - label: "Рядки таблиці"
+                name: "rows"
+                widget: "list"
+                fields:
+                  - label: "Показник"
+                    name: "label"
+                    widget: "string"
+                  
+                  - label: "Значення"
+                    name: "value"
+                    widget: "string"
+
+          # ----------------------------------
+          # БЛОК: Гаряча лінія / Контакти допомоги
+          # ----------------------------------
+          - label: "📞 Гарячі лінії"
+            name: "hotlines_block"
+            widget: "object"
+            summary: "📞 {{fields.heading}}"
+            fields:
+              - label: "Заголовок"
+                name: "heading"
+                widget: "string"
+                default: "Потрібна допомога?"
+              
+              - label: "Підзаголовок"
+                name: "subtitle"
+                widget: "string"
+                required: false
+              
+              - label: "Телефони"
+                name: "phones"
+                widget: "list"
+                fields:
+                  - label: "Номер телефону"
+                    name: "number"
+                    widget: "string"
+                  
+                  - label: "Опис"
+                    name: "description"
+                    widget: "string"
+
+  - name: "examples"
+    label: "💡 Приклади"
+    files:
+      - name: "demo"
+        label: "Демонстраційна сторінка"
+        file: "src/pages/demo-page.md"
+        fields:
+          - {label: "Заголовок", name: "title", widget: "string"}
+          - {label: "Опис", name: "description", widget: "text"}
+          - label: "Блоки контенту"
+            name: "blocks"
+            widget: "list"
+            types: *content_blocks
+
+  # ------------------------------------------
+  # КОЛЕКЦІЯ: Існуючі сторінки (HTML редактор)
+  # ------------------------------------------
+  - name: "legacy_pages"
+    label: "⚡ Існуючі сторінки (HTML)"
+    extension: "njk"
+    format: "frontmatter"
+    editor:
+      preview: false
+    files:
+      - name: "history"
+        label: "Історія гімназії"
+        file: "src/history.njk"
+        fields:
+          - {label: "Заголовок", name: "title", widget: "string"}
+          - {label: "Опис", name: "description", widget: "text"}
+          - {label: "HTML Контент", name: "body", widget: "markdown", editor_components: []}
+      
+      - name: "contacts"
+        label: "Контакти"
+        file: "src/contacts.njk"
+        fields:
+          - {label: "Заголовок", name: "title", widget: "string"}
+          - {label: "HTML Контент", name: "body", widget: "markdown", editor_components: []}
+
+      - name: "management"
+        label: "Адміністрація"
+        file: "src/management.njk"
+        fields:
+          - {label: "Заголовок", name: "title", widget: "string"}
+          - {label: "HTML Контент", name: "body", widget: "markdown", editor_components: []}
+
+      - name: "director"
+        label: "Директор"
+        file: "src/director.njk"
+        fields:
+          - {label: "Заголовок", name: "title", widget: "string"}
+          - {label: "HTML Контент", name: "body", widget: "markdown", editor_components: []}
+
+      - name: "documents"
+        label: "Документи"
+        file: "src/documents.njk"
+        fields:
+          - {label: "Заголовок", name: "title", widget: "string"}
+          - {label: "HTML Контент", name: "body", widget: "markdown", editor_components: []}
+
+      - name: "prozorist"
+        label: "Прозорість"
+        file: "src/prozorist.njk"
+        fields:
+          - {label: "Заголовок", name: "title", widget: "string"}
+          - {label: "HTML Контент", name: "body", widget: "markdown", editor_components: []}
+
+      - name: "admission"
+        label: "Вступ"
+        file: "src/admission.njk"
+        fields:
+          - {label: "Заголовок", name: "title", widget: "string"}
+          - {label: "HTML Контент", name: "body", widget: "markdown", editor_components: []}
+
+      - name: "educational-work"
+        label: "Виховна робота"
+        file: "src/educational-work.njk"
+        fields:
+          - {label: "Заголовок", name: "title", widget: "string"}
+          - {label: "HTML Контент", name: "body", widget: "markdown", editor_components: []}
+
+      - name: "library"
+        label: "Бібліотека"
+        file: "src/library.njk"
+        fields:
+          - {label: "Заголовок", name: "title", widget: "string"}
+          - {label: "HTML Контент", name: "body", widget: "markdown", editor_components: []}
+
+      - name: "psychologist"
+        label: "Психолог"
+        file: "src/psychologist.njk"
+        fields:
+          - {label: "Заголовок", name: "title", widget: "string"}
+          - {label: "HTML Контент", name: "body", widget: "markdown", editor_components: []}
+  - name: "homepage"
+    label: "🏠 Головна сторінка"
+    files:
+      - name: "index"
+        label: "Редагувати головну"
+        file: "src/index.njk"
+        fields:
+          - label: "Заголовок"
+            name: "title"
+            widget: "string"
+          
+          - label: "SEO опис"
+            name: "description"
+            widget: "text"
+          
+          - label: "Hero секція"
+            name: "hero"
+            widget: "object"
+            fields:
+              - label: "Заголовок"
+                name: "title"
+                widget: "string"
+              
+              - label: "Підзаголовок"
+                name: "subtitle"
+                widget: "string"
+              
+              - label: "Слайди (зображення)"
+                name: "slides"
+                widget: "list"
+                field:
+                  label: "Зображення"
+                  name: "slide"
+                  widget: "image"
+
+  # ------------------------------------------
+  # КОЛЕКЦІЯ: Налаштування сайту
+  # ------------------------------------------
+  - name: "settings"
+    label: "⚙️ Налаштування"
+    files:
+      - name: "general"
+        label: "Загальні налаштування"
+        file: "src/_data/settings.json"
+        fields:
+          - label: "Назва гімназії"
+            name: "schoolName"
+            widget: "string"
+          
+          - label: "Слоган"
+            name: "tagline"
+            widget: "string"
+            required: false
+          
+          - label: "Контактний телефон"
+            name: "phone"
+            widget: "string"
+            required: false
+          
+          - label: "Email"
+            name: "email"
+            widget: "string"
+            required: false
+          
+          - label: "Адреса"
+            name: "address"
+            widget: "text"
+            required: false
+          
+          - label: "Facebook URL"
+            name: "facebookUrl"
+            widget: "string"
+            required: false

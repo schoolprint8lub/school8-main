@@ -1,0 +1,506 @@
+{# 
+  ============================================
+  ШАБЛОН ДЛЯ СТОРІНОК З PAGE BUILDER
+  ============================================
+  Рендерить блоки контенту з CMS
+  ============================================
+#}
+
+{% extends "layouts/base.njk" %}
+
+{% block content %}
+
+{# Якщо є hero секція (тільки для головної) #}
+{% if hero %}
+<section class="hero">
+  <div class="hero-slider">
+    {% for slide in hero.slides %}
+    <div class="slide{% if loop.first %} active{% endif %}" style="background-image: url('{{ slide }}');"></div>
+    {% endfor %}
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="container hero-content">
+    <h1>{{ hero.title }}</h1>
+    <p>{{ hero.subtitle }}</p>
+  </div>
+</section>
+{% endif %}
+
+{# Основний контент сторінки #}
+<section class="section">
+  <div class="container">
+    
+    {# Заголовок сторінки (якщо не головна) #}
+    {% if not hero and title %}
+    <h1 class="page-title">{{ title }}</h1>
+    {% endif %}
+    
+    {# ======================================
+       РЕНДЕРИНГ БЛОКІВ PAGE BUILDER
+       ====================================== #}
+    
+    {% if blocks %}
+      {% for block in blocks %}
+        
+        {# ----------------------------------
+           БЛОК: Текстовий блок
+           ---------------------------------- #}
+        {% if block.type == "text_block" %}
+        <div class="card content-block">
+          {% if block.heading %}
+          <h2>{{ block.heading }}</h2>
+          {% endif %}
+          <div class="prose">
+            {{ block.content | safe }}
+          </div>
+        </div>
+        {% endif %}
+        
+        {# ----------------------------------
+           БЛОК: Зображення з текстом
+           ---------------------------------- #}
+        {% if block.type == "image_text_block" %}
+        <div class="image-text-block {{ block.alignment }}">
+          {% if block.heading %}
+          <h2 class="section-title">{{ block.heading }}</h2>
+          {% endif %}
+          <div class="image-text-wrapper">
+            <div class="image-side">
+              <img src="{{ block.image }}" alt="{{ block.alt }}" loading="lazy">
+            </div>
+            <div class="text-side prose">
+              {{ block.content | safe }}
+            </div>
+          </div>
+        </div>
+        {% endif %}
+        
+        {# ----------------------------------
+           БЛОК: Галерея зображень
+           ---------------------------------- #}
+        {% if block.type == "gallery_block" %}
+        <div class="gallery-block">
+          {% if block.heading %}
+          <h2 class="section-title">{{ block.heading }}</h2>
+          {% endif %}
+          {% if block.description %}
+          <p class="section-description">{{ block.description }}</p>
+          {% endif %}
+          
+          <div class="gallery-grid">
+            {% for image in block.images %}
+            <figure class="gallery-item">
+              <img src="{{ image.src }}" alt="{{ image.alt }}" loading="lazy">
+              {% if image.caption %}
+              <figcaption>{{ image.caption }}</figcaption>
+              {% endif %}
+            </figure>
+            {% endfor %}
+          </div>
+        </div>
+        {% endif %}
+        
+        {# ----------------------------------
+           БЛОК: Відео YouTube
+           ---------------------------------- #}
+        {% if block.type == "video_block" %}
+        <div class="video-block">
+          {% if block.title %}
+          <h2 class="section-title">{{ block.title }}</h2>
+          {% endif %}
+          {% if block.description %}
+          <p class="section-description">{{ block.description }}</p>
+          {% endif %}
+          
+          <div class="video-container">
+            <iframe 
+              src="https://www.youtube.com/embed/{{ block.youtube_id }}" 
+              title="{{ block.title }}"
+              frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen
+              loading="lazy">
+            </iframe>
+          </div>
+        </div>
+        {% endif %}
+        
+        {# ----------------------------------
+           БЛОК: Facebook віджет
+           ---------------------------------- #}
+        {% if block.type == "facebook_block" %}
+        <div class="news-layout">
+          <div class="news-intro">
+            <h3>{{ block.heading or "Будьте в курсі подій!" }}</h3>
+            <p>{{ block.intro_text }}</p>
+            {% if block.features %}
+            <ul class="news-features">
+              {% for feature in block.features %}
+              <li>{{ feature }}</li>
+              {% endfor %}
+            </ul>
+            {% endif %}
+          </div>
+
+          <div class="facebook-wrapper">
+            <div id="fb-root"></div>
+            <script async defer crossorigin="anonymous"
+              src="https://connect.facebook.net/uk_UA/sdk.js#xfbml=1&version=v18.0" nonce="abc12345"></script>
+            
+            <div class="fb-page"
+              data-href="{{ block.facebook_url }}"
+              data-tabs="timeline" data-width="500" data-height="500" data-small-header="false"
+              data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+              <blockquote cite="{{ block.facebook_url }}" class="fb-xfbml-parse-ignore">
+                <a href="{{ block.facebook_url }}">Українська класична гімназія</a>
+              </blockquote>
+            </div>
+
+            <a href="{{ block.facebook_url }}" target="_blank" class="fb-overlay-btn">
+              Читати всі новини на Facebook ➔
+            </a>
+          </div>
+        </div>
+        {% endif %}
+
+        {# ----------------------------------
+           БЛОК: Контактна інформація
+           ---------------------------------- #}
+        {% if block.type == "contacts_block" %}
+        <div class="contacts-container">
+          <div class="contact-card">
+            <div class="gymnasia-name">
+              {{ block.organization_name | safe }}
+            </div>
+
+            {% if block.address %}
+            <div class="contact-item">
+              <span class="contact-icon">📍</span>
+              <div>
+                <span class="contact-label">Поштова адреса:</span>
+                {{ block.address | safe }}
+              </div>
+            </div>
+            {% endif %}
+
+            {% if block.phone %}
+            <div class="contact-item">
+              <span class="contact-icon">📞</span>
+              <div>
+                <span class="contact-label">Телефон:</span>
+                <a href="tel:{{ block.phone | replace(' ', '') | replace('(', '') | replace(')', '') | replace('-', '') }}" class="tel-link">{{ block.phone }}</a>
+              </div>
+            </div>
+            {% endif %}
+
+            {% if block.email %}
+            <div class="contact-item">
+              <span class="contact-icon">📧</span>
+              <div>
+                <span class="contact-label">E-mail:</span>
+                <a href="mailto:{{ block.email }}" class="email-link">{{ block.email }}</a>
+              </div>
+            </div>
+            {% endif %}
+          </div>
+
+          {% if block.map_query %}
+          <div class="map-container">
+            <iframe class="map-frame"
+              src="https://maps.google.com/maps?q={{ block.map_query | urlencode }}&t=&z=17&ie=UTF8&iwloc=&output=embed"
+              allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+          {% endif %}
+        </div>
+        {% endif %}
+
+        {# ----------------------------------
+           БЛОК: Картка з посиланням
+           ---------------------------------- #}
+        {% if block.type == "card_block" %}
+        <div class="card mx-auto {{ block.card_class }}">
+          {% if block.icon %}
+          <span class="animate-float history-icon">{{ block.icon }}</span>
+          {% endif %}
+          {% if block.heading %}
+          <h2 class="history-subtitle">{{ block.heading }}</h2>
+          {% endif %}
+          <p class="history-text">{{ block.text }}</p>
+          {% if block.button_url %}
+          <a href="{{ block.button_url }}" target="{{ block.button_target or '_self' }}" class="btn">
+            {{ block.button_text }}
+          </a>
+          {% endif %}
+          {% if block.note %}
+          <p class="history-note">{{ block.note }}</p>
+          {% endif %}
+        </div>
+        {% endif %}
+
+        {# ----------------------------------
+           БЛОК: Сітка карток (для вчителів тощо)
+           ---------------------------------- #}
+        {% if block.type == "cards_grid_block" %}
+        <div class="staff-grid">
+          {% for card in block.cards %}
+          <div class="staff-card">
+            {% if card.image %}
+            <img src="{{ card.image }}" alt="{{ card.name }}" class="staff-photo" loading="lazy">
+            {% endif %}
+            <div class="staff-info">
+              <h3>{{ card.name }}</h3>
+              {% if card.position %}
+              <p class="staff-position">{{ card.position }}</p>
+              {% endif %}
+              {% if card.description %}
+              <p>{{ card.description }}</p>
+              {% endif %}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        {# ----------------------------------
+           БЛОК: Таблиця
+           ---------------------------------- #}
+        {% if block.type == "table_block" %}
+        <div class="table-block">
+          {% if block.heading %}
+          <h3 class="page-title program-subtitle">{{ block.heading }}</h3>
+          {% endif %}
+          {% if block.description %}
+          <p>{{ block.description }}</p>
+          {% endif %}
+          <div class="table-container">
+            <table class="styled-table">
+              {% if block.columns and block.columns.length > 0 %}
+              <thead>
+                <tr>
+                  {% for col in block.columns %}
+                  <th>{{ col }}</th>
+                  {% endfor %}
+                </tr>
+              </thead>
+              {% endif %}
+              <tbody>
+                {% for row in block.rows %}
+                <tr>
+                  {% for cell in row.split('|') %}
+                  <td>{{ cell | trim }}</td>
+                  {% endfor %}
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+        {% endif %}
+
+        {# ----------------------------------
+           БЛОК: Список документів
+           ---------------------------------- #}
+        {% if block.type == "documents_block" %}
+        <div class="documents-block">
+          {% if block.heading %}
+          <h3 class="section-title">{{ block.heading }}</h3>
+          {% endif %}
+          <div class="links-container">
+            {% for doc in block.documents %}
+            <a href="{{ doc.url }}" {% if doc.external %}target="_blank"{% endif %} class="doc-link">
+              <span class="doc-icon">{{ doc.icon }}</span> {{ doc.title }}
+            </a>
+            {% endfor %}
+          </div>
+        </div>
+        {% endif %}
+
+        {# ----------------------------------
+           БЛОК: Інформаційне повідомлення (Alert)
+           ---------------------------------- #}
+        {% if block.type == "alert_block" %}
+        <div class="info-block info-block-{{ block.alert_type }}">
+          {% if block.heading %}
+          <h3>{{ block.heading }}</h3>
+          {% endif %}
+          <div class="prose">
+            {{ block.content | safe }}
+          </div>
+        </div>
+        {% endif %}
+
+        {# ----------------------------------
+           БЛОК: Список посилань
+           ---------------------------------- #}
+        {% if block.type == "links_block" %}
+        <div class="links-block">
+          {% if block.heading %}
+          <h3 class="section-title">{{ block.heading }}</h3>
+          {% endif %}
+          <div class="links-container">
+            {% for link in block.links %}
+            <a href="{{ link.url }}" {% if link.external %}target="_blank"{% endif %} class="doc-link">
+              <span class="doc-icon">{{ link.icon }}</span>
+              <div class="doc-link-col">
+                <span>{{ link.title }}</span>
+                {% if link.description %}
+                <small class="doc-date">{{ link.description }}</small>
+                {% endif %}
+              </div>
+            </a>
+            {% endfor %}
+          </div>
+        </div>
+        {% endif %}
+
+        {# ----------------------------------
+           БЛОК: Розклад уроків
+           ---------------------------------- #}
+        {% if block.type == "schedule_block" %}
+        <div class="schedule-block">
+          {% if block.heading %}
+          <h3 class="page-title program-subtitle">⏰ {{ block.heading }}</h3>
+          {% endif %}
+          <div class="table-container">
+            <table class="styled-table">
+              <thead>
+                <tr>
+                  <th>Урок</th>
+                  <th>Час</th>
+                  <th>Перерва</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for lesson in block.lessons %}
+                <tr>
+                  <td>{{ lesson.number }}</td>
+                  <td>{{ lesson.time }}</td>
+                  <td>{{ lesson.break or '–' }}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+        {% endif %}
+
+        {# ----------------------------------
+           БЛОК: FAQ (Питання-відповідь)
+           ---------------------------------- #}
+        {% if block.type == "faq_block" %}
+        <div class="faq-block">
+          {% if block.heading %}
+          <h3 class="section-title">{{ block.heading }}</h3>
+          {% endif %}
+          <div class="faq-list">
+            {% for item in block.items %}
+            <details class="faq-item">
+              <summary class="faq-question">{{ item.question }}</summary>
+              <div class="faq-answer prose">
+                {{ item.answer | safe }}
+              </div>
+            </details>
+            {% endfor %}
+          </div>
+        </div>
+        {% endif %}
+
+        {# ----------------------------------
+           БЛОК: Гуртки та секції
+           ---------------------------------- #}
+        {% if block.type == "clubs_block" %}
+        <div class="clubs-block">
+          {% if block.heading %}
+          <h3 class="section-title">{{ block.heading }}</h3>
+          {% endif %}
+          <div class="clubs-grid">
+            {% for club in block.clubs %}
+            <div class="club-card card">
+              <div class="club-icon">{{ club.icon }}</div>
+              <h4 class="club-name">{{ club.name }}</h4>
+              {% if club.age %}
+              <p class="club-age">👦 {{ club.age }}</p>
+              {% endif %}
+              {% if club.schedule %}
+              <p class="club-schedule">📅 {{ club.schedule }}</p>
+              {% endif %}
+              {% if club.leader %}
+              <p class="club-leader">👨‍🏫 {{ club.leader }}</p>
+              {% endif %}
+              {% if club.description %}
+              <p class="club-description">{{ club.description }}</p>
+              {% endif %}
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        {% endif %}
+
+        {# ----------------------------------
+           БЛОК: Навчальні предмети
+           ---------------------------------- #}
+        {% if block.type == "subjects_block" %}
+        <div class="info-block info-block-orange">
+          <h3 style="margin-top: 0;">📚 {{ block.heading }}</h3>
+          {% for group in block.groups %}
+          <p style="margin-bottom: 10px;"><strong>{{ group.title }}:</strong></p>
+          <ul class="nz-list">
+            {% for subject in group.subjects %}
+            <li>{{ subject }}</li>
+            {% endfor %}
+          </ul>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        {# ----------------------------------
+           БЛОК: Кадровий склад
+           ---------------------------------- #}
+        {% if block.type == "staff_table_block" %}
+        <div class="staff-table-block">
+          {% if block.heading %}
+          <h3 class="page-title program-subtitle">{{ block.heading }}</h3>
+          {% endif %}
+          <div class="table-container">
+            <table class="styled-table">
+              <tbody>
+                {% for row in block.rows %}
+                <tr>
+                  <td><strong>{{ row.label }}</strong></td>
+                  <td>{{ row.value }}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+        {% endif %}
+
+        {# ----------------------------------
+           БЛОК: Гарячі лінії
+           ---------------------------------- #}
+        {% if block.type == "hotlines_block" %}
+        <div class="hotlines-box">
+          <h2 class="hotline-section-title">📞 {{ block.heading }}</h2>
+          {% if block.subtitle %}
+          <p>{{ block.subtitle }}</p>
+          {% endif %}
+          <div class="hotline-grid">
+            {% for phone in block.phones %}
+            <div class="hotline-item">
+              <span class="hotline-number">{{ phone.number }}</span>
+              <span>{{ phone.description }}</span>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        {% endif %}
+        
+      {% endfor %}
+    {% endif %}
+    
+  </div>
+</section>
+
+{% endblock %}

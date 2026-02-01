@@ -1,0 +1,132 @@
+{# 
+  ============================================
+  БАЗОВИЙ ШАБЛОН - УКРАЇНСЬКА КЛАСИЧНА ГІМНАЗІЯ
+  ============================================
+  
+  Цей шаблон відтворює дизайн оригінального сайту
+  і включає логіку рендерингу блоків Page Builder
+  ============================================
+#}
+
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  {# SEO мета-теги #}
+  <title>{{ title }} | Українська класична гімназія</title>
+  {% if description %}
+  <meta name="description" content="{{ description }}">
+  {% endif %}
+  
+  {# Підключення стилів #}
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="icon" href="/assets/img/logo.png" type="image/png">
+  
+  {# Schema.org для SEO #}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "url": "https://school8-lubny.netlify.app",
+    "logo": "https://school8-lubny.netlify.app/assets/img/logo.png",
+    "name": "Українська класична гімназія Лубенської міської ради"
+  }
+  </script>
+  
+  {# Netlify Identity Widget - для CMS авторизації #}
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+</head>
+
+<body{% if bodyClass %} class="{{ bodyClass }}"{% endif %}>
+  
+  {# ========================================
+     ШАПКА САЙТУ (HEADER)
+     ======================================== #}
+  <header class="header">
+    {% include "partials/header.njk" %}
+  </header>
+  
+  {# ========================================
+     ОСНОВНИЙ КОНТЕНТ
+     ======================================== #}
+  <main>
+    {{ content | safe }}
+  </main>
+  
+  {# ========================================
+     ПІДВАЛ САЙТУ (FOOTER)
+     ======================================== #}
+  <footer class="footer">
+    {% include "partials/footer.njk" %}
+  </footer>
+  
+  {# Скрипти #}
+  <script src="/assets/js/script.js"></script>
+  
+  {# Ініціалізація мобільного меню #}
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const burger = document.getElementById('burger-btn');
+      const nav = document.getElementById('main-nav');
+      const closeBtn = document.getElementById('close-btn');
+      
+      // Створюємо overlay якщо немає
+      let overlay = document.getElementById('overlay');
+      if (!overlay) {
+        overlay = document.createElement('div');
+        overlay.className = 'overlay';
+        overlay.id = 'overlay';
+        document.body.prepend(overlay);
+      }
+
+      const dropdownItems = document.querySelectorAll('.nav-item.dropdown');
+
+      if (burger) {
+        burger.addEventListener('click', () => {
+          nav.classList.add('active');
+          overlay.classList.add('active');
+          document.body.style.overflow = 'hidden';
+        });
+      }
+
+      const closeMenu = () => {
+        nav.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+      };
+
+      if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+      if (overlay) overlay.addEventListener('click', closeMenu);
+
+      // Mobile Accordion
+      dropdownItems.forEach(item => {
+        const link = item.querySelector('.nav-link');
+        if (link) {
+          link.addEventListener('click', (e) => {
+            if (window.innerWidth <= 768) {
+              e.preventDefault();
+              item.classList.toggle('open');
+            }
+          });
+        }
+      });
+    });
+    
+    // Перенаправлення на CMS після авторизації
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", user => {
+        if (!user) {
+          window.netlifyIdentity.on("login", () => {
+            document.location.href = "/admin/";
+          });
+        }
+      });
+    }
+  </script>
+  
+</body>
+</html>

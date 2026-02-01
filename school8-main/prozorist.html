@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Прозорість та відкритість</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans:wght@400;600&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body class="inner-page">
+    <div id="header-placeholder"></div>
+
+    <main>
+        <section class="section">
+            <div class="container">
+                <h1 class="page-title">Прозорість та інформаційна відкритість</h1>
+                <div class="links-container">
+                    <a href="documents.html" class="doc-link"><span class="doc-icon">📜</span> Статутні документи
+                        закладу</a>
+                    <a href="#" class="doc-link" id="openReports"><span class="doc-icon">📊</span> Звіти директора
+                        гімназії <span class="report-note">(Натисніть для вибору)</span></a>
+                    <a href="atestacia.html" class="doc-link"><span class="doc-icon">🎓</span> Атестація педагогічних
+                        працівників</a>
+                    <a href="samoanaliz.html" class="doc-link"><span class="doc-icon">🔍</span> Самоаналіз
+                        діяльності</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="modal-overlay" id="reportsModal">
+        <div class="modal-window">
+            <span class="close-modal" id="closeModal">&times;</span>
+            <h3 class="modal-title">Оберіть рік звіту</h3>
+            <a href="zvit2025.html" class="year-btn">2025 рік</a>
+            <a href="zvit2024.html" class="year-btn">2024 рік</a>
+            <a href="zvit2023.html" class="year-btn">2023 рік</a>
+        </div>
+    </div>
+    <script src="assets/js/components.js"></script>
+    <script src="assets/js/script.js"></script>
+    <script>
+        const modal = document.getElementById('reportsModal');
+        const openBtn = document.getElementById('openReports');
+        const closeBtn = document.getElementById('closeModal');
+        openBtn.addEventListener('click', (e) => { e.preventDefault(); modal.classList.add('open'); });
+        closeBtn.addEventListener('click', () => { modal.classList.remove('open'); });
+        modal.addEventListener('click', (e) => { if (e.target === modal) modal.classList.remove('open'); });
+    </script>
+</body>
+
+</html>

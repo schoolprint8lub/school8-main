@@ -1,0 +1,23 @@
+backend:
+  name: git-gateway
+  branch: main # Переконайтесь, що ваша гілка називається main або master
+
+media_folder: "assets/img/uploads" # Куди завантажуються фото
+public_folder: "assets/img/uploads" # Шлях для HTML
+
+collections:
+  - name: "settings"
+    label: "Налаштування"
+    files:
+      - name: "news"
+        label: "Новини"
+        file: "assets/data/news.json" # CMS буде редагувати цей конкретний файл
+        fields:
+          - label: "Список новин"
+            name: "news_items"
+            widget: "list"
+            fields:
+              - {label: "Заголовок", name: "title", widget: "string"}
+              - {label: "Дата публікації", name: "date", widget: "datetime"}
+              - {label: "Зображення", name: "image", widget: "image", required: false}
+              - {label: "Текст новини", name: "body", widget: "text"}
