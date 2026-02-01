@@ -3,25 +3,246 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- 
-    Адмін-панель Decap CMS для шкільного сайту
-    
-    Ця сторінка завантажує Decap CMS, який дозволяє
-    вчителям редагувати контент без знання HTML.
-    
-    Для роботи потрібна авторизація через Netlify Identity
-    або інший бекенд, налаштований у config.yml
-  -->
   <title>Адмін-панель | Шкільний сайт</title>
   
   <!-- Підключення Netlify Identity Widget для авторизації -->
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  
+  <!-- Стилі для превью -->
+  <style>
+    /* Базові стилі для превью CMS */
+    .preview-frame {
+      font-family: 'Open Sans', sans-serif;
+      color: #263238;
+      line-height: 1.6;
+      padding: 20px;
+      background: #f4f7f6;
+    }
+    
+    .preview-frame h1 {
+      font-family: 'Montserrat', sans-serif;
+      color: #263238;
+      font-size: 2rem;
+      margin-bottom: 15px;
+      border-bottom: 4px solid #f57c00;
+      padding-bottom: 10px;
+    }
+    
+    .preview-frame h2 {
+      font-family: 'Montserrat', sans-serif;
+      color: #2e7d32;
+      font-size: 1.5rem;
+      margin: 20px 0 10px;
+    }
+    
+    .preview-frame p {
+      margin-bottom: 1em;
+    }
+    
+    .preview-frame ul, .preview-frame ol {
+      margin-left: 20px;
+      margin-bottom: 1em;
+    }
+    
+    .preview-frame li {
+      margin-bottom: 0.5em;
+    }
+    
+    .preview-frame strong {
+      font-weight: 700;
+      color: #2e7d32;
+    }
+    
+    .preview-frame .field-label {
+      font-size: 0.75rem;
+      color: #888;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+    
+    .preview-frame .block-preview {
+      background: white;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 15px 0;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    
+    .preview-frame .staff-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 20px;
+    }
+    
+    .preview-frame .staff-card {
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    
+    .preview-frame .staff-photo {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      background: #f0f0f0;
+    }
+    
+    .preview-frame .staff-info {
+      padding: 15px;
+    }
+    
+    .preview-frame .staff-info h3 {
+      font-size: 1rem;
+      margin-bottom: 5px;
+    }
+    
+    .preview-frame .staff-position {
+      color: #2e7d32;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+    
+    .preview-frame .image-text-block {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 20px;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+    }
+    
+    .preview-frame .image-side img {
+      width: 100%;
+      border-radius: 8px;
+    }
+    
+    .preview-frame table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    
+    .preview-frame th {
+      background: #2e7d32;
+      color: white;
+      padding: 10px;
+      text-align: left;
+    }
+    
+    .preview-frame td {
+      padding: 10px;
+      border-bottom: 1px solid #eee;
+    }
+  </style>
 </head>
 <body>
-  <!-- 
-    Основний скрипт Decap CMS
-    Завантажує інтерфейс адміністратора
-  -->
+  <!-- Основний скрипт Decap CMS -->
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  
+  <!-- Реєстрація превью темплейтів -->
+  <script>
+    // Превью для сторінок
+    var PagePreview = createClass({
+      render: function() {
+        var entry = this.props.entry;
+        var title = entry.getIn(['data', 'title']) || '';
+        var description = entry.getIn(['data', 'description']) || '';
+        var blocks = entry.getIn(['data', 'blocks']);
+        
+        return h('div', {className: 'preview-frame'},
+          h('h1', {}, title),
+          h('p', {style: {color: '#666', fontStyle: 'italic'}}, description),
+          
+          blocks ? blocks.map(function(block, index) {
+            var type = block.get('type');
+            
+            // Text Block
+            if (type === 'text_block') {
+              return h('div', {key: index, className: 'block-preview'},
+                h('div', {className: 'field-label'}, 'Текстовий блок'),
+                block.get('heading') && h('h2', {}, block.get('heading')),
+                h('div', {dangerouslySetInnerHTML: {__html: block.get('content') || ''}})
+              );
+            }
+            
+            // Image Text Block
+            if (type === 'image_text_block') {
+              return h('div', {key: index, className: 'block-preview image-text-block'},
+                h('div', {className: 'image-side'},
+                  h('img', {src: block.get('image'), alt: block.get('alt') || ''})
+                ),
+                h('div', {className: 'text-side'},
+                  block.get('heading') && h('h2', {}, block.get('heading')),
+                  h('div', {dangerouslySetInnerHTML: {__html: block.get('content') || ''}})
+                )
+              );
+            }
+            
+            // Cards Grid Block (Staff)
+            if (type === 'cards_grid_block') {
+              var cards = block.get('cards');
+              return h('div', {key: index, className: 'block-preview'},
+                h('div', {className: 'field-label'}, 'Сітка карток'),
+                h('div', {className: 'staff-grid'},
+                  cards && cards.map(function(card, i) {
+                    return h('div', {key: i, className: 'staff-card'},
+                      card.get('image') && h('img', {src: card.get('image'), className: 'staff-photo'}),
+                      h('div', {className: 'staff-info'},
+                        h('h3', {}, card.get('name')),
+                        card.get('position') && h('p', {className: 'staff-position'}, card.get('position'))
+                      )
+                    );
+                  })
+                )
+              );
+            }
+            
+            // Table Block
+            if (type === 'table_block') {
+              return h('div', {key: index, className: 'block-preview'},
+                h('div', {className: 'field-label'}, 'Таблиця'),
+                block.get('heading') && h('h3', {}, block.get('heading')),
+                h('p', {style: {color: '#888'}}, 'Таблиця з ' + (block.get('rows') ? block.get('rows').size : 0) + ' рядків')
+              );
+            }
+            
+            // Documents Block
+            if (type === 'documents_block') {
+              return h('div', {key: index, className: 'block-preview'},
+                h('div', {className: 'field-label'}, 'Документи'),
+                block.get('heading') && h('h3', {}, block.get('heading')),
+                h('p', {style: {color: '#888'}}, (block.get('documents') ? block.get('documents').size : 0) + ' документів')
+              );
+            }
+            
+            // Alert Block
+            if (type === 'alert_block') {
+              var alertType = block.get('alert_type') || 'info';
+              var bgColors = {
+                'info': '#e3f2fd',
+                'warning': '#fff3e0',
+                'success': '#e8f5e9',
+                'error': '#ffebee'
+              };
+              return h('div', {key: index, className: 'block-preview', style: {
+                background: bgColors[alertType] || '#f0f0f0',
+                borderLeft: '4px solid #2e7d32'
+              }},
+                block.get('heading') && h('h3', {}, block.get('heading')),
+                h('div', {dangerouslySetInnerHTML: {__html: block.get('content') || ''}})
+              );
+            }
+            
+            // Default for other blocks
+            return h('div', {key: index, className: 'block-preview'},
+              h('div', {className: 'field-label'}, 'Блок: ' + type)
+            );
+          }) : null
+        );
+      }
+    });
+    
+    CMS.registerPreviewTemplate('site_pages', PagePreview);
+  </script>
 </body>
 </html>
