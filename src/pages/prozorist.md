@@ -12,17 +12,9 @@ blocks:
         url: "/documents/"
         external: false
       - icon: "📊"
-        title: "Звіт директора 2025"
-        url: "/assets/docs/zvit2025.pdf"
-        external: true
-      - icon: "📊"
-        title: "Звіт директора 2024"
-        url: "/assets/docs/zvit2024.pdf"
-        external: true
-      - icon: "📊"
-        title: "Звіт директора 2023"
-        url: "/assets/docs/zvit2023.pdf"
-        external: true
+        title: "Звіти директора гімназії <span class='report-note'>(Натисніть для вибору)</span>"
+        url: "#reports-modal-trigger"
+        external: false
       - icon: "🎓"
         title: "Атестація педагогічних працівників"
         url: "/atestacia/"
@@ -31,4 +23,44 @@ blocks:
         title: "Самоаналіз діяльності"
         url: "/samoanaliz/"
         external: false
+  
+  - type: text_block
+    content: |
+      <div class="modal-overlay" id="reportsModal">
+          <div class="modal-window">
+              <span class="close-modal" id="closeModal" style="position: absolute; top: 10px; right: 15px; font-size: 24px; cursor: pointer; color: #888;">&times;</span>
+              <h3 class="modal-title">Оберіть рік звіту</h3>
+              <a href="/assets/docs/zvit2025.pdf" class="btn" style="display: block; margin: 10px auto; width: 80%;">2025 рік</a>
+              <a href="/assets/docs/zvit2024.pdf" class="btn" style="display: block; margin: 10px auto; width: 80%;">2024 рік</a>
+              <a href="/assets/docs/zvit2023.pdf" class="btn" style="display: block; margin: 10px auto; width: 80%;">2023 рік</a>
+          </div>
+      </div>
+      
+      <script>
+      document.addEventListener('DOMContentLoaded', () => {
+          const modal = document.getElementById('reportsModal');
+          // Find link by href since we can't add ID
+          const openBtn = document.querySelector('a[href="#reports-modal-trigger"]');
+          const closeBtn = document.getElementById('closeModal');
+          
+          if(openBtn && modal) {
+              openBtn.addEventListener('click', (e) => { 
+                  e.preventDefault(); 
+                  modal.classList.add('open'); 
+              });
+          }
+          
+          if(closeBtn && modal) {
+              closeBtn.addEventListener('click', () => { 
+                  modal.classList.remove('open'); 
+              });
+          }
+          
+          if(modal) {
+              modal.addEventListener('click', (e) => { 
+                  if (e.target === modal) modal.classList.remove('open'); 
+              });
+          }
+      });
+      </script>
 ---
