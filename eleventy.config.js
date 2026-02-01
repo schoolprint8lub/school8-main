@@ -7,7 +7,21 @@
  * - Шаблонізатор Nunjucks
  */
 
+const markdownIt = require("markdown-it");
+
 module.exports = function (eleventyConfig) {
+
+    // Markdown-it для рендерингу контенту в блоках Page Builder
+    const md = new markdownIt({
+        html: true,
+        breaks: true,
+        linkify: true
+    });
+
+    eleventyConfig.addFilter("markdownify", (content) => {
+        if (!content) return "";
+        return md.render(content);
+    });
 
     // Копіювання папки admin без обробки (для Decap CMS)
     eleventyConfig.addPassthroughCopy("src/admin");
