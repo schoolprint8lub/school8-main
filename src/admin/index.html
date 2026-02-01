@@ -5,129 +5,279 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Адмін-панель | Шкільний сайт</title>
-
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;600&display=swap"
+    rel="stylesheet">
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 
   <style>
-    .preview-frame {
+    /* Повний стиль превью як справжня сторінка */
+    :root {
+      --primary-green: #2e7d32;
+      --light-green: #e8f5e9;
+      --accent-orange: #f57c00;
+      --text-dark: #263238;
+      --text-light: #546e7a;
+      --white: #ffffff;
+      --bg-color: #f4f7f6;
+    }
+
+    .site-preview {
       font-family: 'Open Sans', sans-serif;
-      color: #263238;
-      line-height: 1.6;
-      padding: 20px;
-      background: #f4f7f6;
+      color: var(--text-dark);
+      background: var(--bg-color);
+      min-height: 100vh;
     }
 
-    .preview-frame h1 {
-      font-family: 'Montserrat', sans-serif;
-      color: #263238;
-      font-size: 2rem;
-      margin-bottom: 15px;
-      border-bottom: 4px solid #f57c00;
-      padding-bottom: 10px;
+    /* Хедер превью */
+    .preview-header {
+      background: var(--white);
+      border-bottom: 3px solid var(--primary-green);
+      padding: 15px 30px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
     }
 
-    .preview-frame h2 {
-      font-family: 'Montserrat', sans-serif;
-      color: #2e7d32;
+    .preview-header .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .preview-header .logo-icon {
+      width: 50px;
+      height: 50px;
+      background: var(--primary-green);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
       font-size: 1.5rem;
-      margin: 20px 0 10px;
     }
 
-    .preview-frame p {
+    .preview-header .logo-text {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      color: var(--primary-green);
+      text-transform: uppercase;
+      font-size: 0.9rem;
+    }
+
+    /* Hero секція */
+    .preview-hero {
+      background: linear-gradient(135deg, var(--primary-green) 0%, #1b5e20 100%);
+      color: white;
+      text-align: center;
+      padding: 60px 30px;
+    }
+
+    .preview-hero h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.2rem;
+      margin-bottom: 15px;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .preview-hero p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+
+    /* Основний контент */
+    .preview-main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 30px;
+    }
+
+    .preview-main .section {
+      padding: 20px 0;
+    }
+
+    .preview-main h2 {
+      font-family: 'Montserrat', sans-serif;
+      color: var(--primary-green);
+      font-size: 1.6rem;
+      margin: 25px 0 15px;
+      position: relative;
+    }
+
+    .preview-main h2::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 3px;
+      background: var(--accent-orange);
+      margin-top: 8px;
+    }
+
+    .preview-main p {
+      margin-bottom: 1em;
+      line-height: 1.7;
+    }
+
+    .preview-main ul,
+    .preview-main ol {
+      margin-left: 25px;
       margin-bottom: 1em;
     }
 
-    .preview-frame ul,
-    .preview-frame ol {
-      margin-left: 20px;
-      margin-bottom: 1em;
-    }
-
-    .preview-frame li {
+    .preview-main li {
       margin-bottom: 0.5em;
     }
 
-    .preview-frame strong {
+    .preview-main strong {
       font-weight: 700;
-      color: #2e7d32;
+      color: var(--primary-green);
     }
 
-    .preview-frame .field-label {
-      font-size: 0.75rem;
-      color: #888;
-      text-transform: uppercase;
-      margin-bottom: 5px;
-    }
-
-    .preview-frame .block-preview {
+    /* Картки */
+    .preview-card {
       background: white;
-      border-radius: 8px;
-      padding: 20px;
-      margin: 15px 0;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      border-radius: 12px;
+      padding: 25px;
+      margin: 20px 0;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+      border-left: 4px solid var(--primary-green);
     }
 
-    .preview-frame .staff-grid {
+    /* Сітка вчителів */
+    .staff-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 25px;
+      margin: 25px 0;
     }
 
-    .preview-frame .staff-card {
+    .staff-card {
       background: white;
-      border-radius: 8px;
+      border-radius: 12px;
       overflow: hidden;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s;
     }
 
-    .preview-frame .staff-photo {
+    .staff-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .staff-photo {
       width: 100%;
-      height: 200px;
+      height: 250px;
       object-fit: cover;
-      background: #f0f0f0;
+      background: #e0e0e0;
     }
 
-    .preview-frame .staff-info {
-      padding: 15px;
+    .staff-info {
+      padding: 20px;
+      border-top: 3px solid var(--primary-green);
     }
 
-    .preview-frame .staff-info h3 {
+    .staff-info h3 {
+      font-family: 'Montserrat', sans-serif;
       font-size: 1rem;
       margin-bottom: 5px;
     }
 
-    .preview-frame .staff-position {
-      color: #2e7d32;
+    .staff-position {
+      color: var(--primary-green);
       font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    /* Image + Text блок */
+    .image-text-block {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 30px;
+      background: white;
+      border-radius: 12px;
+      padding: 25px;
+      margin: 25px 0;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .image-side img {
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Таблиці */
+    .table-wrapper {
+      overflow-x: auto;
+      margin: 20px 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    th {
+      background: var(--primary-green);
+      color: white;
+      padding: 12px 15px;
+      text-align: left;
       font-weight: 600;
     }
 
-    .preview-frame .image-text-block {
-      display: grid;
-      grid-template-columns: 1fr 2fr;
-      gap: 20px;
-    }
-
-    .preview-frame .image-side img {
-      width: 100%;
-      border-radius: 8px;
-    }
-
-    .preview-frame table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-
-    .preview-frame th {
-      background: #2e7d32;
-      color: white;
-      padding: 10px;
-      text-align: left;
-    }
-
-    .preview-frame td {
-      padding: 10px;
+    td {
+      padding: 12px 15px;
       border-bottom: 1px solid #eee;
+    }
+
+    tr:hover {
+      background: var(--light-green);
+    }
+
+    /* Футер превью */
+    .preview-footer {
+      background: #263238;
+      color: #cfd8dc;
+      text-align: center;
+      padding: 25px;
+      margin-top: 40px;
+    }
+
+    .preview-footer p {
+      margin: 0;
+      font-size: 0.9rem;
+    }
+
+    /* Alert блоки */
+    .alert-info {
+      background: #e3f2fd;
+      border-left: 4px solid #2196f3;
+    }
+
+    .alert-warning {
+      background: #fff3e0;
+      border-left: 4px solid #ff9800;
+    }
+
+    .alert-success {
+      background: var(--light-green);
+      border-left: 4px solid #4caf50;
+    }
+
+    .alert-error {
+      background: #ffebee;
+      border-left: 4px solid #f44336;
+    }
+
+    .block-label {
+      font-size: 0.7rem;
+      color: #999;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      letter-spacing: 1px;
     }
   </style>
 </head>
@@ -149,87 +299,102 @@
         var description = entry.getIn(['data', 'description']) || '';
         var blocks = entry.getIn(['data', 'blocks']);
 
-        return h('div', { className: 'preview-frame' },
-          h('h1', {}, title),
-          h('p', { style: { color: '#666', fontStyle: 'italic' } }, description),
+        return h('div', { className: 'site-preview' },
+          // Хедер
+          h('div', { className: 'preview-header' },
+            h('div', { className: 'logo' },
+              h('div', { className: 'logo-icon' }, '🏫'),
+              h('div', { className: 'logo-text' }, 'Лубенська школа №8')
+            )
+          ),
 
-          blocks ? blocks.map(function (block, index) {
-            var type = block.get('type');
-            var content = block.get('content') || '';
-            var parsedContent = parseMarkdown(content);
+          // Hero секція
+          h('div', { className: 'preview-hero' },
+            h('h1', {}, title),
+            h('p', {}, description)
+          ),
 
-            if (type === 'text_block') {
-              return h('div', { key: index, className: 'block-preview' },
-                h('div', { className: 'field-label' }, 'Текстовий блок'),
-                block.get('heading') && h('h2', {}, block.get('heading')),
-                h('div', { dangerouslySetInnerHTML: { __html: parsedContent } })
-              );
-            }
+          // Основний контент
+          h('main', { className: 'preview-main' },
+            h('div', { className: 'section' },
+              blocks ? blocks.map(function (block, index) {
+                var type = block.get('type');
+                var content = block.get('content') || '';
+                var parsedContent = parseMarkdown(content);
 
-            if (type === 'image_text_block') {
-              return h('div', { key: index, className: 'block-preview image-text-block' },
-                h('div', { className: 'image-side' },
-                  h('img', { src: block.get('image'), alt: block.get('alt') || '' })
-                ),
-                h('div', { className: 'text-side' },
-                  block.get('heading') && h('h2', {}, block.get('heading')),
-                  h('div', { dangerouslySetInnerHTML: { __html: parsedContent } })
-                )
-              );
-            }
-
-            if (type === 'cards_grid_block') {
-              var cards = block.get('cards');
-              return h('div', { key: index, className: 'block-preview' },
-                h('div', { className: 'field-label' }, 'Сітка карток'),
-                h('div', { className: 'staff-grid' },
-                  cards && cards.map(function (card, i) {
-                    return h('div', { key: i, className: 'staff-card' },
-                      card.get('image') && h('img', { src: card.get('image'), className: 'staff-photo' }),
-                      h('div', { className: 'staff-info' },
-                        h('h3', {}, card.get('name')),
-                        card.get('position') && h('p', { className: 'staff-position' }, card.get('position'))
-                      )
-                    );
-                  })
-                )
-              );
-            }
-
-            if (type === 'table_block') {
-              return h('div', { key: index, className: 'block-preview' },
-                h('div', { className: 'field-label' }, 'Таблиця'),
-                block.get('heading') && h('h3', {}, block.get('heading')),
-                h('p', { style: { color: '#888' } }, 'Таблиця з ' + (block.get('rows') ? block.get('rows').size : 0) + ' рядків')
-              );
-            }
-
-            if (type === 'documents_block') {
-              return h('div', { key: index, className: 'block-preview' },
-                h('div', { className: 'field-label' }, 'Документи'),
-                block.get('heading') && h('h3', {}, block.get('heading')),
-                h('p', { style: { color: '#888' } }, (block.get('documents') ? block.get('documents').size : 0) + ' документів')
-              );
-            }
-
-            if (type === 'alert_block') {
-              var alertType = block.get('alert_type') || 'info';
-              var bgColors = { 'info': '#e3f2fd', 'warning': '#fff3e0', 'success': '#e8f5e9', 'error': '#ffebee' };
-              return h('div', {
-                key: index, className: 'block-preview', style: {
-                  background: bgColors[alertType] || '#f0f0f0',
-                  borderLeft: '4px solid #2e7d32'
+                if (type === 'text_block') {
+                  return h('div', { key: index, className: 'preview-card' },
+                    h('div', { className: 'block-label' }, 'Текстовий блок'),
+                    block.get('heading') && h('h2', {}, block.get('heading')),
+                    h('div', { dangerouslySetInnerHTML: { __html: parsedContent } })
+                  );
                 }
-              },
-                block.get('heading') && h('h3', {}, block.get('heading')),
-                h('div', { dangerouslySetInnerHTML: { __html: parsedContent } })
-              );
-            }
 
-            return h('div', { key: index, className: 'block-preview' },
-              h('div', { className: 'field-label' }, 'Блок: ' + type)
-            );
-          }) : null
+                if (type === 'image_text_block') {
+                  return h('div', { key: index, className: 'image-text-block' },
+                    h('div', { className: 'image-side' },
+                      h('img', { src: block.get('image'), alt: block.get('alt') || '' })
+                    ),
+                    h('div', { className: 'text-side' },
+                      block.get('heading') && h('h2', {}, block.get('heading')),
+                      h('div', { dangerouslySetInnerHTML: { __html: parsedContent } })
+                    )
+                  );
+                }
+
+                if (type === 'cards_grid_block') {
+                  var cards = block.get('cards');
+                  return h('div', { key: index },
+                    h('div', { className: 'block-label' }, 'Сітка карток'),
+                    h('div', { className: 'staff-grid' },
+                      cards && cards.map(function (card, i) {
+                        return h('div', { key: i, className: 'staff-card' },
+                          card.get('image') && h('img', { src: card.get('image'), className: 'staff-photo' }),
+                          h('div', { className: 'staff-info' },
+                            h('h3', {}, card.get('name')),
+                            card.get('position') && h('p', { className: 'staff-position' }, card.get('position'))
+                          )
+                        );
+                      })
+                    )
+                  );
+                }
+
+                if (type === 'table_block') {
+                  return h('div', { key: index, className: 'preview-card' },
+                    h('div', { className: 'block-label' }, 'Таблиця'),
+                    block.get('heading') && h('h3', {}, block.get('heading')),
+                    h('p', { style: { color: '#888' } }, '📊 Таблиця з ' + (block.get('rows') ? block.get('rows').size : 0) + ' рядків')
+                  );
+                }
+
+                if (type === 'documents_block') {
+                  return h('div', { key: index, className: 'preview-card' },
+                    h('div', { className: 'block-label' }, 'Документи'),
+                    block.get('heading') && h('h3', {}, block.get('heading')),
+                    h('p', { style: { color: '#888' } }, '📄 ' + (block.get('documents') ? block.get('documents').size : 0) + ' документів')
+                  );
+                }
+
+                if (type === 'alert_block') {
+                  var alertType = block.get('alert_type') || 'info';
+                  return h('div', { key: index, className: 'preview-card alert-' + alertType },
+                    block.get('heading') && h('h3', {}, block.get('heading')),
+                    h('div', { dangerouslySetInnerHTML: { __html: parsedContent } })
+                  );
+                }
+
+                return h('div', { key: index, className: 'preview-card' },
+                  h('div', { className: 'block-label' }, 'Блок: ' + type)
+                );
+              }) : null
+            )
+          ),
+
+          // Футер
+          h('div', { className: 'preview-footer' },
+            h('p', {}, '© 2026 Лубенська загальноосвітня школа №8')
+          )
         );
       }
     });
