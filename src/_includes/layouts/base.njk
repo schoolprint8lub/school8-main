@@ -54,7 +54,10 @@
      ОСНОВНИЙ КОНТЕНТ
      ======================================== #}
   <main>
-    {% block content %}{% endblock %}
+    {% block content %}
+      {# Fallback: якщо block порожній, використати content змінну #}
+      {{ content | safe }}
+    {% endblock %}
   </main>
   
   {# ========================================
