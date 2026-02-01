@@ -294,9 +294,17 @@
               <tbody>
                 {% for row in block.rows %}
                 <tr>
-                  {% for cell in row.split('|') %}
-                  <td>{{ cell | trim }}</td>
-                  {% endfor %}
+                  {% if row is iterable and row is not string %}
+                    {# Row is an array #}
+                    {% for cell in row %}
+                    <td>{{ cell }}</td>
+                    {% endfor %}
+                  {% else %}
+                    {# Row is a pipe-delimited string #}
+                    {% for cell in row.split('|') %}
+                    <td>{{ cell | trim }}</td>
+                    {% endfor %}
+                  {% endif %}
                 </tr>
                 {% endfor %}
               </tbody>
