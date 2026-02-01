@@ -167,6 +167,15 @@ collections:
                 widget: "text"
                 required: false
               
+              - label: "Кількість колонок"
+                name: "columns"
+                widget: "select"
+                options:
+                  - { label: "1 колонка", value: "1" }
+                  - { label: "2 колонки", value: "2" }
+                  - { label: "3 колонки", value: "3" }
+                default: "3"
+              
               - label: "Зображення"
                 name: "images"
                 widget: "list"

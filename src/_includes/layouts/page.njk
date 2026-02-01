@@ -94,7 +94,8 @@
           <p class="section-description">{{ block.description }}</p>
           {% endif %}
           
-          <div class="gallery-grid">
+          {% set cols = block.columns or 3 %}
+          <div class="gallery-{{ cols }}-col">
             {% for image in block.images %}
             <figure class="gallery-item">
               <img src="{{ image.src }}" alt="{{ image.alt }}" loading="lazy">

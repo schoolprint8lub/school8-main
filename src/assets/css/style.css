@@ -4819,3 +4819,798 @@ html {
         padding: 10px 12px;
     }
 }
+
+/* =========================================
+   STYLED NUMBERED LISTS (Green Circles)
+   ========================================= */
+.numbered-list,
+.prose ol,
+.content-block ol,
+.card ol {
+    counter-reset: item;
+    list-style: none;
+    padding-left: 0;
+    margin: 20px 0;
+}
+
+.numbered-list li,
+.prose ol li,
+.content-block ol li,
+.card ol li {
+    counter-increment: item;
+    position: relative;
+    padding-left: 50px;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.numbered-list li::before,
+.prose ol li::before,
+.content-block ol li::before,
+.card ol li::before {
+    content: counter(item);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 32px;
+    height: 32px;
+    background: var(--primary-green);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.9rem;
+    box-shadow: 0 2px 8px rgba(46, 125, 50, 0.3);
+}
+
+/* =========================================
+   CHECKMARK LISTS (Green Checkmarks)
+   ========================================= */
+.checklist,
+.prose ul,
+.content-block ul,
+.card ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 20px 0;
+}
+
+.checklist li,
+.prose ul li,
+.content-block ul li,
+.card ul li {
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.checklist li::before,
+.prose ul li::before,
+.content-block ul li::before,
+.card ul li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--primary-green);
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+/* =========================================
+   INFO CARDS WITH BORDERS
+   ========================================= */
+.info-card,
+.card.bordered {
+    background: white;
+    border-radius: 12px;
+    padding: 30px;
+    margin: 25px 0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+    border-left: 5px solid var(--primary-green);
+}
+
+.info-card.orange,
+.card.bordered.orange {
+    border-left-color: var(--accent-orange);
+}
+
+.info-card.blue {
+    border-left-color: #2196f3;
+}
+
+.info-card p:first-child {
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.info-card p.italic,
+.info-card em {
+    font-style: italic;
+    color: var(--text-light);
+}
+
+/* =========================================
+   SECTION TITLES WITH UNDERLINE
+   ========================================= */
+.section-title,
+.block-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.6rem;
+    color: var(--primary-green);
+    text-align: center;
+    margin: 40px 0 25px;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.section-title::after,
+.block-title::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background: var(--accent-orange);
+    margin: 15px auto 0;
+    border-radius: 2px;
+}
+
+/* =========================================
+   GALLERY LAYOUTS (1, 2, 3 columns)
+   ========================================= */
+.gallery-1-col {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+.gallery-2-col {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.gallery-3-col {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.gallery-1-col img,
+.gallery-2-col img,
+.gallery-3-col img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.gallery-2-col img:hover,
+.gallery-3-col img:hover {
+    transform: scale(1.03);
+}
+
+/* Responsive gallery */
+@media (max-width: 768px) {
+
+    .gallery-2-col,
+    .gallery-3-col {
+        grid-template-columns: 1fr;
+    }
+
+    .numbered-list li,
+    .prose ol li,
+    .content-block ol li {
+        padding-left: 45px;
+    }
+
+    .numbered-list li::before,
+    .prose ol li::before,
+    .content-block ol li::before {
+        width: 28px;
+        height: 28px;
+        font-size: 0.8rem;
+    }
+}
+
+/* =========================================
+   IMPROVED PROSE CONTENT STYLING
+   ========================================= */
+.prose strong,
+.content-block strong,
+.card strong {
+    color: var(--text-dark);
+    font-weight: 700;
+}
+
+.prose a,
+.content-block a {
+    color: var(--primary-green);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.prose a:hover,
+.content-block a:hover {
+    color: var(--accent-orange);
+}
+
+.prose p,
+.content-block p {
+    margin-bottom: 1em;
+    line-height: 1.75;
+}
+
+/* First paragraph bold style */
+.intro-text,
+.prose>p:first-of-type strong {
+    font-size: 1.05rem;
+}
+
+/* =========================================
+   COLORED TEXT UTILITIES
+   ========================================= */
+.text-green,
+.prose .text-green,
+strong.green {
+    color: var(--primary-green) !important;
+}
+
+.text-orange,
+.prose .text-orange,
+strong.orange {
+    color: var(--accent-orange) !important;
+}
+
+.text-blue,
+.prose .text-blue,
+strong.blue {
+    color: #2196f3 !important;
+}
+
+.text-red,
+.prose .text-red,
+strong.red {
+    color: #d32f2f !important;
+}
+
+.text-dark,
+.prose .text-dark {
+    color: var(--text-dark) !important;
+}
+
+.text-light,
+.prose .text-light {
+    color: var(--text-light) !important;
+}
+
+/* Highlight backgrounds */
+.highlight-green {
+    background: var(--light-green);
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+
+.highlight-orange {
+    background: #fff3e0;
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+
+.highlight-yellow {
+    background: #fffde7;
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+
+/* Underline styles */
+.underline-green {
+    border-bottom: 3px solid var(--primary-green);
+    padding-bottom: 2px;
+}
+
+
+/* =========================================
+   UNIQUE PAGE STYLES (Restored from Backup)
+   ========================================= */
+
+/* STUDENT RIGHTS & ACADEMIC INTEGRITY PAGES */
+.approve-block {
+    text-align: right;
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.rights-page-title {
+    text-align: center !important;
+}
+
+.rights-intro-text {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 40px;
+    background: #fff3e0;
+    padding: 20px;
+    border-radius: 10px;
+    border-left: 5px solid var(--accent-orange);
+}
+
+.rights-subtitle {
+    font-size: 1.8rem;
+    color: var(--primary-green);
+    font-family: 'Montserrat', sans-serif;
+    margin: 40px 0 30px 0;
+    text-align: center;
+}
+
+.rules-section {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    margin-bottom: 30px;
+}
+
+.rules-title {
+    font-size: 1.3rem;
+    color: var(--primary-green);
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.rules-list {
+    list-style-position: outside;
+    padding-left: 25px;
+    margin: 20px 0;
+}
+
+.rules-list li {
+    margin-bottom: 15px;
+    line-height: 1.7;
+    color: #555;
+}
+
+.snack-list {
+    list-style: disc;
+    margin-left: 25px;
+    margin-top: 10px;
+}
+
+.snack-list li {
+    margin-bottom: 8px;
+}
+
+.recommendations-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 15px;
+}
+
+.recommendations-list li {
+    padding-left: 25px;
+    position: relative;
+    margin-bottom: 12px;
+    line-height: 1.6;
+}
+
+.recommendations-list li::before {
+    content: '💡';
+    position: absolute;
+    left: 0;
+}
+
+/* ACADEMIC INTEGRITY SPECIFICS */
+.definition-box {
+    background: linear-gradient(135deg, #e3f2fd 0%, #f1f8e9 100%);
+    padding: 30px;
+    border-radius: 15px;
+    margin-bottom: 40px;
+    border-left: 5px solid var(--primary-green);
+}
+
+.definition-title {
+    font-size: 1.3rem;
+    color: var(--primary-green);
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 15px;
+}
+
+.definition-title.corruption {
+    color: #d32f2f;
+    margin-top: 30px;
+}
+
+.academic-definition-desc {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #333;
+}
+
+.law-section {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    margin-bottom: 30px;
+}
+
+.law-section.orange-border {
+    border-left: 5px solid var(--accent-orange);
+}
+
+.law-title {
+    font-size: 1.3rem;
+    color: var(--primary-green);
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 15px;
+}
+
+.law-title.orange-text {
+    color: var(--accent-orange);
+}
+
+.law-subtitle {
+    font-size: 0.95rem;
+    color: #777;
+    font-style: italic;
+    margin-bottom: 20px;
+}
+
+.materials-title {
+    margin-top: 50px !important;
+}
+
+.resources-section {
+    background: #f8f9fa;
+    padding: 30px;
+    border-radius: 12px;
+    margin-top: 30px;
+}
+
+.resources-title {
+    font-size: 1.5rem;
+    color: var(--primary-green);
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 25px;
+}
+
+.materials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.grid-doc-link {
+    background: white;
+    border: 2px solid #e0e0e0;
+    padding: 15px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: 0.2s;
+}
+
+.grid-doc-link:hover {
+    border-color: var(--primary-green);
+    color: var(--primary-green);
+}
+
+/* EDUCATIONAL WORK STYLES */
+.intro-box {
+    background: #e8f5e9;
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 40px;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    border-left: 5px solid var(--primary-green);
+}
+
+.edu-work-priority-title {
+    font-size: 1.6rem;
+    color: var(--primary-green);
+    font-family: 'Montserrat', sans-serif;
+    margin: 40px 0 30px 0;
+    text-align: center;
+}
+
+.directions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-bottom: 50px;
+}
+
+.direction-desc {
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.icon-large {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.edu-work-docs-title {
+    font-size: 1.6rem;
+    color: var(--primary-green);
+    font-family: 'Montserrat', sans-serif;
+    margin: 40px 0 25px 0;
+}
+
+.construction-area {
+    background: #fff3e0;
+    padding: 40px;
+    border-radius: 12px;
+    text-align: center;
+    margin-top: 40px;
+    border: 2px dashed var(--accent-orange);
+}
+
+.construction-icon {
+    font-size: 4rem;
+    margin-top: 20px;
+}
+
+/* ELECTRONIC DIARY (NZ.UA) PAGES */
+.nz-section {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    margin-bottom: 30px;
+}
+
+.nz-centered-section {
+    text-align: center;
+}
+
+.nz-intro-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 25px;
+}
+
+.nz-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-green);
+    margin-bottom: 20px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.nz-link-btn {
+    display: inline-block;
+    background: #1877F2;
+    color: white;
+    font-weight: 700;
+    padding: 15px 35px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: 0.3s;
+    box-shadow: 0 4px 10px rgba(24, 119, 242, 0.3);
+    margin: 20px 0;
+}
+
+.nz-link-btn:hover {
+    background: #155db5;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(24, 119, 242, 0.4);
+    color: white;
+}
+
+.nz-apps-box {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 25px;
+    text-align: left;
+}
+
+.nz-app-link {
+    color: var(--primary-green);
+    text-decoration: underline;
+    font-weight: 600;
+}
+
+.nz-app-link:hover {
+    color: var(--dark-green);
+}
+
+.step-list {
+    text-align: left;
+    margin: 20px 0;
+    padding-left: 25px;
+}
+
+.step-list li {
+    margin-bottom: 12px;
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+.nz-list {
+    list-style: none;
+    padding: 0;
+    margin: 15px 0;
+}
+
+.nz-list li {
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+    line-height: 1.6;
+}
+
+.nz-list li:last-child {
+    border-bottom: none;
+}
+
+.screenshot-img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    display: block;
+    border: 2px solid #e0e0e0;
+}
+
+.nz-instruction-box {
+    background: linear-gradient(135deg, #e8f5e9 0%, #f1f8e9 100%);
+    border-left: 5px solid var(--primary-green);
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.nz-instruction-title {
+    color: var(--primary-green);
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.nz-instruction-desc {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.nz-instruction-btn {
+    margin-top: 15px;
+}
+
+.nz-support-text {
+    margin-top: 20px;
+    font-size: 0.95rem;
+    color: #666;
+}
+
+.nz-support-link {
+    color: var(--primary-green);
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 1px solid var(--primary-green);
+    transition: 0.2s;
+}
+
+.nz-support-link:hover {
+    color: var(--dark-green);
+    border-bottom-color: var(--dark-green);
+}
+
+/* DISTANCE LEARNING */
+.distance-welcome {
+    color: var(--primary-green);
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.distance-text {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: 15px;
+}
+
+.distance-alert {
+    background: #fff3e0;
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 4px solid var(--accent-orange);
+    margin: 15px 0;
+    font-weight: 600;
+}
+
+.distance-hr {
+    border: none;
+    border-top: 2px solid #e0e0e0;
+    margin: 25px 0;
+}
+
+.distance-subtitle {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #444;
+}
+
+.app-box {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px 0;
+}
+
+.app-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.app-badge {
+    background: var(--primary-green);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.app-badge:hover {
+    background: var(--dark-green);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    color: white;
+}
+
+.distance-signature {
+    text-align: right;
+    font-weight: 700;
+    margin-top: 30px;
+    color: var(--text-dark);
+}
+
+/* CONTACTS */
+.contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.contact-icon {
+    font-size: 1.5rem;
+    background: #f0f8f0;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: var(--primary-green);
+}
+
+.contact-label {
+    display: block;
+    font-weight: 600;
+    color: var(--text-light);
+    font-size: 0.85rem;
+    margin-bottom: 3px;
+    text-transform: uppercase;
+}

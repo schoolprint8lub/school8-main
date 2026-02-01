@@ -303,8 +303,11 @@
           // Хедер
           h('div', { className: 'preview-header' },
             h('div', { className: 'logo' },
-              h('div', { className: 'logo-icon' }, '🏫'),
-              h('div', { className: 'logo-text' }, 'Лубенська школа №8')
+              h('div', { className: 'logo-icon' }, '🎓'),
+              h('div', {},
+                h('div', { className: 'logo-text' }, 'Українська класична гімназія'),
+                h('div', { style: { fontSize: '0.7rem', color: '#666' } }, 'Лубенської міської ради')
+              )
             )
           ),
 
