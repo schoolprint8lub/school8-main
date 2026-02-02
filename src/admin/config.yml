@@ -99,6 +99,13 @@ collections:
         required: false
         hint: "Зазвичай 'inner-page' для внутрішніх сторінок"
       
+      # Основний контент (Markdown)
+      - label: "HTML/Markdown Контент"
+        name: "body"
+        widget: "markdown"
+        required: false
+        hint: "Основний текст сторінки (відображається перед блоками)"
+
       # ========================================
       # КОНСТРУКТОР СТОРІНОК (PAGE BUILDER)
       # ========================================
@@ -821,40 +828,7 @@ collections:
           - {label: "Заголовок", name: "title", widget: "string"}
           - {label: "HTML Контент", name: "body", widget: "markdown", editor_components: []}
 
-      - name: "prozorist"
-        label: "Прозорість"
-        file: "src/prozorist.njk"
-        fields:
-          - {label: "Заголовок", name: "title", widget: "string"}
-          - {label: "HTML Контент", name: "body", widget: "markdown", editor_components: []}
 
-      - name: "admission"
-        label: "Вступ"
-        file: "src/admission.njk"
-        fields:
-          - {label: "Заголовок", name: "title", widget: "string"}
-          - {label: "HTML Контент", name: "body", widget: "markdown", editor_components: []}
-
-      - name: "educational-work"
-        label: "Виховна робота"
-        file: "src/educational-work.njk"
-        fields:
-          - {label: "Заголовок", name: "title", widget: "string"}
-          - {label: "HTML Контент", name: "body", widget: "markdown", editor_components: []}
-
-      - name: "library"
-        label: "Бібліотека"
-        file: "src/library.njk"
-        fields:
-          - {label: "Заголовок", name: "title", widget: "string"}
-          - {label: "HTML Контент", name: "body", widget: "markdown", editor_components: []}
-
-      - name: "psychologist"
-        label: "Психолог"
-        file: "src/psychologist.njk"
-        fields:
-          - {label: "Заголовок", name: "title", widget: "string"}
-          - {label: "HTML Контент", name: "body", widget: "markdown", editor_components: []}
   - name: "homepage"
     label: "🏠 Головна сторінка"
     files:
