@@ -928,3 +928,51 @@ collections:
             name: "facebookUrl"
             widget: "string"
             required: false
+
+  # ------------------------------------------
+  # КОЛЕКЦІЯ: Навігація
+  # ------------------------------------------
+  - name: "navigation"
+    label: "Навігація (Меню)"
+    files:
+      - name: "menu"
+        label: "Редагувати меню"
+        file: "src/_data/navigation.json"
+        fields:
+          - label: "Пункти меню"
+            name: "items"
+            widget: "list"
+            fields:
+              - {label: "Назва", name: "label", widget: "string"}
+              - {label: "Тип", name: "type", widget: "select", options: [{label: "Звичайне посилання", value: "link"}, {label: "Випадаючий список (простий)", value: "simple_dropdown"}, {label: "Мега-меню (стовпчики)", value: "mega_dropdown"}], default: "link"}
+              
+              # Simple Link
+              - {label: "Посилання (якщо обрано Link)", name: "url", widget: "string", required: false}
+              
+              # Mega Dropdown
+              - label: "Стовпчики (для Mega Menu)"
+                name: "columns"
+                widget: "list"
+                required: false
+                fields:
+                  - {label: "Заголовок стовпчика", name: "heading", widget: "string"}
+                  - label: "Посилання в стовпчику"
+                    name: "links"
+                    widget: "list"
+                    fields:
+                      - {label: "Назва", name: "label", widget: "string"}
+                      - {label: "URL", name: "url", widget: "string"}
+                      - {label: "Нова вкладка?", name: "external", widget: "boolean", default: false, required: false}
+                      - {label: "CSS стилі", name: "style", widget: "string", required: false}
+
+              # Simple Dropdown
+              - label: "Посилання (для Simple Dropdown)"
+                name: "links"
+                widget: "list"
+                required: false
+                fields:
+                  - {label: "Назва", name: "label", widget: "string"}
+                  - {label: "URL", name: "url", widget: "string"}
+                  - {label: "Нова вкладка?", name: "external", widget: "boolean", default: false, required: false}
+                  - {label: "CSS стилі", name: "style", widget: "string", required: false}
+                  - {label: "CSS клас (highlight)", name: "highlight", widget: "boolean", default: false, required: false}
