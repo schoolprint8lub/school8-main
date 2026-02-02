@@ -32,7 +32,7 @@ blocks:
         image: "/assets/img/t-hontar.jpg"
         description: '<span class="card-badge">Спеціаліст вищої категорії</span> <span class="card-badge">Старший учитель</span> <strong>Стаж роботи: 39 років</strong>'
       - name: "Манько Надія Олександрівна"
-        position: "Вчитель основ здоров\'я"
+        position: "Вчитель основ здоров'я"
         image: "/assets/img/t-manko.jpg"
         description: '<span class="card-badge">Спеціаліст вищої категорії</span> <span class="card-badge">Старший учитель</span> <strong>Стаж роботи: 32 роки</strong>'
       - name: "Тарасенко Світлана Петрівна"
