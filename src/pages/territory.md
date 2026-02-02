@@ -4,38 +4,28 @@ description: "Територія обслуговування Українськ
 layout: "layouts/page.njk"
 bodyClass: "inner-page"
 section: "parents"
+blocks:
+  - type: "text_block"
+    content: "Інформація про закріплену територію обслуговування за закладом освіти згідно з рішеннями виконавчого комітету Лубенської міської ради."
+
+  - type: "links_block"
+    heading: "Нормативні документи"
+    links:
+      - title: "Територія обслуговування (Загальна)"
+        description: "Перелік вулиць, закріплених за Українською класичною гімназією."
+        url: "https://drive.google.com/file/d/1aDOlErLPNMnzhDsmpoaZ4w-gZwcPYb_N/view?usp=sharing"
+        external: true
+        icon: "📍"
+      - title: "Територія обслуговування (Набір до 1-го класу)"
+        description: "Інформація для батьків майбутніх першокласників."
+        url: "https://drive.google.com/file/d/1aHQrfURxZoGzLtyDP3Wvq5YgVwfr86GP/view?usp=sharing"
+        external: true
+        icon: "🎒"
+
+  - type: "text_block"
+    content: |
+      <div style="text-align: center; margin-top: 40px;">
+        <div style="font-size: 5rem;">🗺️</div>
+        <p>Знайдіть свою вулицю у документах вище</p>
+      </div>
 ---
-
-<h1 class="page-title">Територія обслуговування гімназії (мікрорайон)</h1>
-
-<div class="territory-intro">
-    <p>Інформація про закріплену територію обслуговування за закладом освіти згідно з рішеннями
-        виконавчого комітету Лубенської міської ради.</p>
-</div>
-
-<div class="documents-list">
-
-    <a href="https://drive.google.com/file/d/1aDOlErLPNMnzhDsmpoaZ4w-gZwcPYb_N/view?usp=sharing" target="_blank" class="doc-card">
-        <div class="doc-icon">📍</div>
-        <div class="doc-content">
-            <span class="doc-title-terr">Територія обслуговування (Загальна)</span>
-            <span class="doc-desc-terr">Перелік вулиць, закріплених за Українською класичною гімназією.</span>
-        </div>
-        <div class="doc-arrow">➝</div>
-    </a>
-
-    <a href="https://drive.google.com/file/d/1aHQrfURxZoGzLtyDP3Wvq5YgVwfr86GP/view?usp=sharing" target="_blank" class="doc-card">
-        <div class="doc-icon">🎒</div>
-        <div class="doc-content">
-            <span class="doc-title-terr">Територія обслуговування (Набір до 1-го класу)</span>
-            <span class="doc-desc-terr">Інформація для батьків майбутніх першокласників.</span>
-        </div>
-        <div class="doc-arrow">➝</div>
-    </a>
-
-</div>
-
-<div class="map-illustration">
-    <div style="font-size: 5rem;">🗺️</div>
-    <p>Знайдіть свою вулицю у документах вище</p>
-</div>

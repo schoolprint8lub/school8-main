@@ -4,84 +4,34 @@ description: "Адміністрація Української класично
 layout: "layouts/page.njk"
 bodyClass: "inner-page"
 section: "about"
+blocks:
+  - type: "cards_grid_block"
+    cards:
+      - name: "Юрченко Аліна Сергіївна"
+        position: "Директор гімназії"
+        image: "/assets/img/admin-director.jpg"
+        center: true
+
+  - type: "cards_grid_block"
+    cards:
+      - name: "Тарасенко Світлана Петрівна"
+        position: "Заступник директора з навчальної роботи"
+        image: "/assets/img/admin-tarasenko.jpg"
+        border_color: "#ff9900"
+      - name: "Манько Надія Олександрівна"
+        position: "Заступник директора з виховної роботи"
+        image: "/assets/img/admin-manko.jpg"
+        border_color: "#ff9900"
+
+  - type: "table_block"
+    heading: "Графік особистого прийому громадян адміністрацією закладу освіти"
+    columns: 
+      - "Дні тижня/місяця"
+      - "Години прийому"
+      - "Посадова особа, яка здійснює прийом"
+    rows:
+      - "1 четвер місяця|14.00 - 15.00|<strong>Директор гімназії</strong><br>Юрченко А.С."
+      - "2 четвер місяця|14.00 - 15.00|<strong>Заступник директора з НР</strong> Тарасенко С.П.<br><strong>Заступник директора з ВР</strong> Манько Н.О."
+      - "3 четвер місяця|14.00 - 15.00|<strong>Директор гімназії</strong><br>Юрченко А.С."
+      - "4 четвер місяця|14.00 - 15.00|<strong>Заступник директора з НР</strong> Тарасенко С.П.<br><strong>Заступник директора з ВР</strong> Манько Н.О."
 ---
-
-<h1 class="page-title">Управління закладом освіти</h1>
-
-<div class="director-wrapper">
-    <div class="card admin-card-large">
-        <div class="admin-photo-container">
-            <img src="/assets/img/admin-director.jpg" alt="Юрченко Аліна Сергіївна" class="card-photo admin-photo" onerror="this.src='/assets/img/logo.png'">
-        </div>
-        <div class="card-content">
-            <div class="card-title">Юрченко Аліна Сергіївна</div>
-            <div class="card-subtitle">Директор гімназії</div>
-        </div>
-    </div>
-</div>
-
-<div class="card-grid">
-    <div class="card admin-card-large card-top-orange">
-        <div class="admin-photo-container">
-            <img src="/assets/img/admin-tarasenko.jpg" alt="Тарасенко Світлана Петрівна" class="card-photo admin-photo" onerror="this.src='/assets/img/logo.png'">
-        </div>
-        <div class="card-content">
-            <div class="card-title">Тарасенко Світлана Петрівна</div>
-            <div class="card-subtitle text-orange">Заступник директора з навчальної роботи</div>
-        </div>
-    </div>
-
-    <div class="card admin-card-large" style="border-top-color: var(--accent-orange); border-bottom: none;">
-        <div class="admin-photo-container">
-            <img src="/assets/img/admin-manko.jpg" alt="Манько Надія Олександрівна" class="card-photo admin-photo" onerror="this.src='/assets/img/logo.png'">
-        </div>
-        <div class="card-content">
-            <div class="card-title">Манько Надія Олександрівна</div>
-            <div class="card-subtitle" style="color: var(--accent-orange);">Заступник директора з виховної роботи</div>
-        </div>
-    </div>
-</div>
-
-<div class="table-section">
-    <h2 class="page-title" style="font-size: 1.5rem; margin-bottom: 20px;">Графік особистого прийому громадян<br>адміністрацією закладу освіти</h2>
-
-    <div class="table-responsive">
-        <table class="base-table">
-            <thead>
-                <tr>
-                    <th width="20%">Дні тижня/місяця</th>
-                    <th width="20%">Години прийому</th>
-                    <th>Посадова особа, яка здійснює прийом</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1 четвер місяця</td>
-                    <td>14.00 - 15.00</td>
-                    <td><strong>Директор гімназії</strong><br>Юрченко А.С.</td>
-                </tr>
-                <tr>
-                    <td>2 четвер місяця</td>
-                    <td>14.00 - 15.00</td>
-                    <td>
-                        <strong>Заступник директора з НР</strong> Тарасенко С.П.<br>
-                        <strong>Заступник директора з ВР</strong> Манько Н.О.
-                    </td>
-                </tr>
-                <tr>
-                    <td>3 четвер місяця</td>
-                    <td>14.00 - 15.00</td>
-                    <td><strong>Директор гімназії</strong><br>Юрченко А.С.</td>
-                </tr>
-                <tr>
-                    <td>4 четвер місяця</td>
-                    <td>14.00 - 15.00</td>
-                    <td>
-                        <strong>Заступник директора з НР</strong> Тарасенко С.П.<br>
-                        <strong>Заступник директора з ВР</strong> Манько Н.О.
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
