@@ -10,34 +10,53 @@ blocks:
       - name: "Бала Ірина Володимирівна"
         position: "Вчитель історії"
         image: "/assets/img/t-bala.jpg"
-        description: '<span class="card-badge">Спеціаліст вищої категорії</span> <span class="card-badge">Педагогічне звання "Старший учитель"</span> <strong>Стаж роботи: 23 роки</strong>'
+        badges:
+          - "Спеціаліст вищої категорії"
+          - "Педагогічне звання \"Старший учитель\""
+        experience: "Стаж роботи: 23 роки"
       - name: "Копил Наталія Едгартівна"
         position: "Вчитель англійської мови"
         image: "/assets/img/t-kopyl.jpg"
-        description: '<span class="card-badge">Спеціаліст І категорії</span> <strong>Стаж роботи: 24 роки</strong>'
+        badges:
+          - "Спеціаліст І категорії"
+        experience: "Стаж роботи: 24 роки"
       - name: "Литвих Тетяна Володимирівна"
         position: "Вчитель зарубіжної літератури"
         image: "/assets/img/t-lytvykh.jpg"
-        description: '<span class="card-badge">Спеціаліст ІІ категорії</span> <strong>Стаж роботи: 4 роки</strong>'
+        badges:
+          - "Спеціаліст ІІ категорії"
+        experience: "Стаж роботи: 4 роки"
       - name: "Мельник Лілія Юріївна"
         position: "Вчитель англійської мови"
         image: "/assets/img/t-melnyk.jpg"
-        description: '<span class="card-badge">Спеціаліст І категорії</span> <strong>Стаж роботи: 12 років</strong>'
+        badges:
+          - "Спеціаліст І категорії"
+        experience: "Стаж роботи: 12 років"
       - name: "Помаз Вікторія Григорівна"
         position: "Вчитель української мови та літератури"
         image: "/assets/img/t-pomaz.jpg"
-        description: '<span class="card-badge">Спеціаліст І категорії</span> <strong>Стаж роботи: 16 років</strong>'
+        badges:
+          - "Спеціаліст І категорії"
+        experience: "Стаж роботи: 16 років"
       - name: "Сафронова Ірина Олександрівна"
         position: "Вчитель історії, правознавства"
         image: "/assets/img/t-safronova.jpg"
-        description: '<span class="card-badge">Спеціаліст вищої категорії</span> <span class="card-badge">Учитель-методист</span> <strong>Стаж роботи: 42 роки</strong>'
+        badges:
+          - "Спеціаліст вищої категорії"
+          - "Учитель-методист"
+        experience: "Стаж роботи: 42 роки"
       - name: "Шовкопляс Людмила Анатоліївна"
         position: "Вчитель української мови та літератури"
         image: "/assets/img/t-shovkoplias.jpg"
-        description: '<span class="card-badge">Спеціаліст І категорії</span> <strong>Стаж роботи: 8 років</strong>'
+        badges:
+          - "Спеціаліст І категорії"
+        experience: "Стаж роботи: 8 років"
       - name: "Юрченко Аліна Сергіївна"
         position: "Вчитель української мови та літератури"
         image: "/assets/img/t-yurchenko.jpg"
         border_color: "var(--accent-orange)"
-        description: '<span class="card-badge">Спеціаліст вищої категорії</span> <span class="card-badge">Учитель-методист</span> <strong>Стаж роботи: 22 роки</strong>'
+        badges:
+          - "Спеціаліст вищої категорії"
+          - "Учитель-методист"
+        experience: "Стаж роботи: 22 роки"
 ---

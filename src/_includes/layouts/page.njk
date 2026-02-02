@@ -275,6 +275,19 @@
               {% if card.position %}
               <div class="card-subtitle">{{ card.position }}</div>
               {% endif %}
+              
+              {% if card.badges %}
+              <div class="card-badges-list">
+                {% for badge in card.badges %}
+                <span class="card-badge">{{ badge }}</span>
+                {% endfor %}
+              </div>
+              {% endif %}
+
+              {% if card.experience %}
+              <div class="card-experience"><strong>{{ card.experience }}</strong></div>
+              {% endif %}
+
               {% if card.description %}
               <div class="card-desc">{{ card.description | safe }}</div>
               {% endif %}

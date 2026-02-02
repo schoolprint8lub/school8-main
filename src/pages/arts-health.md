@@ -10,33 +10,53 @@ blocks:
       - name: "Бала Ірина Володимирівна"
         position: "Вчитель трудового навчання та образотворчого мистецтва"
         image: "/assets/img/t-bala.jpg"
-        description: '<span class="card-badge">Спеціаліст вищої категорії</span> <span class="card-badge">Старший учитель</span> <strong>Стаж роботи: 23 роки</strong>'
+        badges:
+          - "Спеціаліст вищої категорії"
+          - "Старший учитель"
+        experience: "Стаж роботи: 23 роки"
       - name: "Василенко Андрій Михайлович"
         position: "Вчитель фізичної культури"
         image: "/assets/img/t-vasylenko.jpg"
-        description: '<span class="card-badge">Спеціаліст вищої категорії</span> <strong>Стаж роботи: 19 років</strong>'
+        badges:
+          - "Спеціаліст вищої категорії"
+        experience: "Стаж роботи: 19 років"
       - name: "Симоненко Наталія Володимирівна"
         position: "Вчитель музичного мистецтва"
         image: "/assets/img/t-symonenko.jpg"
-        description: '<span class="card-badge">Спеціаліст вищої категорії</span> <strong>Стаж роботи: 19 років</strong>'
+        badges:
+          - "Спеціаліст вищої категорії"
+        experience: "Стаж роботи: 19 років"
       - name: "Фролов Євгеній Володимирович"
         position: "Вчитель фізичної культури"
         image: "/assets/img/t-frolov.jpg"
-        description: '<span class="card-badge">Спеціаліст вищої категорії</span> <span class="card-badge">Старший учитель</span> <strong>Стаж роботи: 23 роки</strong>'
+        badges:
+          - "Спеціаліст вищої категорії"
+          - "Старший учитель"
+        experience: "Стаж роботи: 23 роки"
       - name: "Вербенець Юлія Володимирівна"
         position: "Вчитель етики"
         image: "/assets/img/t-verbenets.jpg"
-        description: '<span class="card-badge">Кваліфікаційний рівень «Спеціаліст»</span>'
+        badges:
+          - "Кваліфікаційний рівень «Спеціаліст»"
       - name: "Гонтар Олексій Петрович"
         position: "Вчитель трудового навчання та креслення"
         image: "/assets/img/t-hontar.jpg"
-        description: '<span class="card-badge">Спеціаліст вищої категорії</span> <span class="card-badge">Старший учитель</span> <strong>Стаж роботи: 39 років</strong>'
+        badges:
+          - "Спеціаліст вищої категорії"
+          - "Старший учитель"
+        experience: "Стаж роботи: 39 років"
       - name: "Манько Надія Олександрівна"
         position: "Вчитель основ здоров'я"
         image: "/assets/img/t-manko.jpg"
-        description: '<span class="card-badge">Спеціаліст вищої категорії</span> <span class="card-badge">Старший учитель</span> <strong>Стаж роботи: 32 роки</strong>'
+        badges:
+          - "Спеціаліст вищої категорії"
+          - "Старший учитель"
+        experience: "Стаж роботи: 32 роки"
       - name: "Тарасенко Світлана Петрівна"
         position: "Вчитель музичного мистецтва"
         image: "/assets/img/t-tarasenko.jpg"
-        description: '<span class="card-badge">Спеціаліст вищої категорії</span> <span class="card-badge">Учитель-методист</span> <strong>Стаж роботи: 33 роки</strong>'
+        badges:
+          - "Спеціаліст вищої категорії"
+          - "Учитель-методист"
+        experience: "Стаж роботи: 33 роки"
 ---

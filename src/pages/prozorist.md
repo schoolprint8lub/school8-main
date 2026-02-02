@@ -5,7 +5,7 @@ layout: "layouts/page.njk"
 bodyClass: "inner-page"
 blocks:
   - type: links_block
-    heading: "Прозорість та інформаційна відкритість"
+    heading: ""
     links:
       - icon: "📜"
         title: "Статутні документи закладу"
@@ -62,4 +62,3 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 </script>
----

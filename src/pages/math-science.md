@@ -10,21 +10,34 @@ blocks:
       - name: "Баран Людмила В'ячеславівна"
         position: "Вчитель географії та курсу \"Пізнаємо природу\""
         image: "/assets/img/t-baran.jpg"
-        description: '<span class="card-badge">Спеціаліст І категорії</span> <strong>Стаж роботи: 9 років</strong>'
+        badges:
+          - "Спеціаліст І категорії"
+        experience: "Стаж роботи: 9 років"
       - name: "Ващенко Олександра Григорівна"
         position: "Вчитель хімії та географії"
         image: "/assets/img/t-vashchenko.jpg"
-        description: '<span class="card-badge">Спеціаліст вищої категорії</span> <strong>Стаж роботи: 18 років</strong>'
+        badges:
+          - "Спеціаліст вищої категорії"
+        experience: "Стаж роботи: 18 років"
       - name: "Грицай Тетяна Анатоліївна"
         position: "Вчитель інформатики та СШП"
         image: "/assets/img/t-hrytsai.jpg"
-        description: '<span class="card-badge">Спеціаліст вищої категорії</span> <span class="card-badge">Учитель-методист</span> <strong>Стаж роботи: 20 років</strong>'
+        badges:
+          - "Спеціаліст вищої категорії"
+          - "Учитель-методист"
+        experience: "Стаж роботи: 20 років"
       - name: "Лябах Наталія Василівна"
         position: "Вчитель математики"
         image: "/assets/img/t-liabakh.jpg"
-        description: '<span class="card-badge">Спеціаліст вищої категорії</span> <span class="card-badge">Старший учитель</span> <strong>Стаж роботи: 37 років</strong>'
+        badges:
+          - "Спеціаліст вищої категорії"
+          - "Старший учитель"
+        experience: "Стаж роботи: 37 років"
       - name: "Шип Світлана Миколаївна"
         position: "Вчитель фізики та математики"
         image: "/assets/img/t-shyp.jpg"
-        description: '<span class="card-badge">Спеціаліст вищої категорії</span> <span class="card-badge">Старший учитель</span> <strong>Стаж роботи: 21 рік</strong>'
+        badges:
+          - "Спеціаліст вищої категорії"
+          - "Старший учитель"
+        experience: "Стаж роботи: 21 рік"
 ---

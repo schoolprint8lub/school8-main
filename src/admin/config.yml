@@ -325,18 +325,61 @@ collections:
                     widget: "image"
                     required: false
                   
-                  - label: "Ім'я"
+                  - label: "Іконка (емодзі)"
+                    name: "icon"
+                    widget: "string"
+                    required: false
+                    hint: "Альтернатива фото для карток-категорій (наприклад: 📚)"
+
+                  - label: "Ім'я / Назва"
                     name: "name"
                     widget: "string"
                   
-                  - label: "Посада"
+                  - label: "Посада / Підзаголовок"
                     name: "position"
                     widget: "string"
                     required: false
                   
+                  - label: "Верхній бейдж (Клас)"
+                    name: "badge_top"
+                    widget: "string"
+                    required: false
+                    hint: "Наприклад: 5-А КЛАС (помаранчева наклейка на фото)"
+
+                  - label: "Бейджі (кваліфікація)"
+                    name: "badges"
+                    widget: "list"
+                    required: false
+                    field: {label: "Бейдж", name: "badge", widget: "string"}
+                    hint: "Наприклад: Спеціаліст вищої категорії"
+
+                  - label: "Стаж / Досвід (жирним)"
+                    name: "experience"
+                    widget: "string"
+                    required: false
+                    hint: "Наприклад: Стаж роботи: 23 роки"
+
                   - label: "Опис"
                     name: "description"
                     widget: "text"
+                    required: false
+                    hint: "Можна використовувати HTML теги (наприклад: <span class='card-badge'>...</span>)"
+                  
+                  - label: "Посилання (весь блок)"
+                    name: "link"
+                    widget: "string"
+                    required: false
+                    hint: "Якщо додано, вся картка стане посиланням"
+
+                  - label: "По центру?"
+                    name: "center"
+                    widget: "boolean"
+                    default: false
+                    required: false
+                  
+                  - label: "Колір рамки знизу"
+                    name: "border_color"
+                    widget: "color"
                     required: false
 
           # ----------------------------------

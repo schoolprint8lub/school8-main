@@ -6962,3 +6962,80 @@ sans-serif;
     letter-spacing: 0.5px;
     font-family: 'Montserrat', sans-serif;
 }
+
+/* --- STAFF PAGE --- */
+.staff-summary {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.05);
+    padding: 40px;
+}
+
+.main-stat {
+    text-align: center;
+    margin-bottom: 40px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 30px;
+}
+
+.stat-number {
+    display: block;
+    font-size: 5rem;
+    font-weight: 800;
+    color: var(--primary-green);
+    line-height: 1;
+    margin-bottom: 10px;
+}
+
+.stat-label {
+    font-size: 1.1rem;
+    color: #555;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.stats-list {
+    list-style: none;
+    padding: 0;
+}
+
+.stats-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    margin-bottom: 12px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    transition: transform 0.2s ease;
+}
+
+.stats-list li:hover {
+    transform: translateX(5px);
+    background: #f1f8e9;
+}
+
+.check-icon {
+    color: var(--primary-green);
+    margin-right: 12px;
+    font-weight: bold;
+}
+
+.count-badge {
+    background: var(--accent-orange);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.count-badge.green {
+    background: var(--primary-green);
+}
+
+.count-badge.gray {
+    background: #999;
+}
