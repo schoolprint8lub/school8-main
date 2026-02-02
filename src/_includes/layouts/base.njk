@@ -70,6 +70,9 @@
   {# Скрипти #}
   <script src="/assets/js/script.js"></script>
   
+  {# Кнопка "Вгору" #}
+  <button class="scroll-to-top" id="scrollToTop" aria-label="Прокрутити вгору">↑</button>
+  
   {# Ініціалізація мобільного меню #}
   <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -117,6 +120,22 @@
           });
         }
       });
+      
+      // Scroll to Top Button
+      const scrollBtn = document.getElementById('scrollToTop');
+      if (scrollBtn) {
+        window.addEventListener('scroll', () => {
+          if (window.scrollY > 300) {
+            scrollBtn.classList.add('visible');
+          } else {
+            scrollBtn.classList.remove('visible');
+          }
+        });
+        
+        scrollBtn.addEventListener('click', () => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
     });
     
     // Перенаправлення на CMS після авторизації
