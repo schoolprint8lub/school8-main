@@ -23,7 +23,7 @@
     <div class="close-menu-btn" id="close-btn">&times;</div>
 
     <ul class="nav-list">
-      {% for item in navigation %}
+      {% for item in navigation.items %}
         {% if item.type == 'link' %}
           <li class="nav-item">
             <a href="{{ item.url }}" class="nav-link">{{ item.label }}</a>
