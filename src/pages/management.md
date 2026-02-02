@@ -3,6 +3,7 @@ title: "Управління закладом освіти"
 description: "Адміністрація Української класичної гімназії Лубенської міської ради."
 layout: "layouts/page.njk"
 bodyClass: "inner-page"
+section: "about"
 ---
 
 <h1 class="page-title">Управління закладом освіти</h1>

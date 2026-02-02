@@ -3,6 +3,7 @@ title: "Кадровий склад"
 description: "Інформація про кадровий склад Української класичної гімназії."
 layout: "layouts/page.njk"
 bodyClass: "inner-page"
+section: "about"
 ---
 
 <h1 class="page-title">Кадровий склад</h1>

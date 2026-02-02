@@ -3,6 +3,7 @@ title: "Територія обслуговування"
 description: "Територія обслуговування Української класичної гімназії."
 layout: "layouts/page.njk"
 bodyClass: "inner-page"
+section: "parents"
 ---
 
 <h1 class="page-title">Територія обслуговування гімназії (мікрорайон)</h1>

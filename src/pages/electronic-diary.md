@@ -3,6 +3,7 @@ title: "Електронний щоденник"
 description: "Інформація про електронний щоденник НЗ для учнів та батьків."
 layout: "layouts/page.njk"
 bodyClass: "inner-page"
+section: "students"
 blocks:
   - type: text_block
     content: |

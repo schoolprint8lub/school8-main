@@ -3,6 +3,7 @@ title: "Навчальні програми (1-4 класи)"
 description: "Перелік навчальних програм для початкової школи."
 layout: "layouts/page.njk"
 bodyClass: "inner-page"
+section: "students"
 blocks:
   - type: table_block
     heading: "1 клас"

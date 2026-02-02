@@ -3,6 +3,7 @@ title: "Психологічна допомога під час війни"
 description: "Психологічна допомога та підтримка під час війни."
 layout: "layouts/page.njk"
 bodyClass: "inner-page"
+section: "centers"
 blocks:
   - type: text_block
     heading: "Психологічна допомога та підтримка під час війни"

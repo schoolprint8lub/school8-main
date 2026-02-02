@@ -3,6 +3,7 @@ title: "Сторінка директора"
 description: "Вітальне слово директора Української класичної гімназії."
 layout: "layouts/page.njk"
 bodyClass: "inner-page"
+section: "about"
 blocks:
   - type: image_text_block
     heading: "Любі друзі!"

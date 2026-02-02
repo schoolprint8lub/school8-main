@@ -3,6 +3,7 @@ title: "Розклад (Початкова школа)"
 description: "Розклад занять для 1-4 класів Української класичної гімназії."
 layout: "layouts/page.njk"
 bodyClass: "inner-page"
+section: "students"
 blocks:
   - type: alert_block
     alert_type: "info"

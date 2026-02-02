@@ -3,6 +3,7 @@ title: "Учительська спільнота"
 description: "Педагогічний колектив Української класичної гімназії."
 layout: "layouts/page.njk"
 bodyClass: "inner-page"
+section: "about"
 blocks:
   - type: text_block
     content: |

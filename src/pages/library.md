@@ -3,6 +3,7 @@ title: "Бібліотечно-інформаційний центр"
 description: "Бібліотечно-інформаційний центр Української класичної гімназії."
 layout: "layouts/page.njk"
 bodyClass: "inner-page"
+section: "centers"
 ---
 
 <h1 class="page-title">Бібліотечно-інформаційний центр</h1>

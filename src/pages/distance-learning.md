@@ -3,6 +3,7 @@ title: "Дистанційне навчання"
 description: "Інформація про дистанційне навчання в Українській класичній гімназії."
 layout: "layouts/page.njk"
 bodyClass: "inner-page"
+section: "students"
 blocks:
   - type: alert_block
     alert_type: "warning"

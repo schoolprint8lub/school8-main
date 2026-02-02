@@ -3,6 +3,7 @@ title: "Вчителі початкових класів"
 description: "Професійна спільнота вчителів початкових класів."
 layout: "layouts/page.njk"
 bodyClass: "inner-page"
+section: "about"
 blocks:
   - type: cards_grid_block
     heading: ""

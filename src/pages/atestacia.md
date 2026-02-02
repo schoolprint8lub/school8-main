@@ -3,6 +3,7 @@ title: "Атестація педагогічних працівників"
 description: "Атестація педагогічних працівників Української класичної гімназії."
 layout: "layouts/page.njk"
 bodyClass: "inner-page"
+section: "about"
 blocks:
   - type: text_block
     heading: ""

@@ -3,6 +3,7 @@ title: "Розклад (Середня школа)"
 description: "Розклад занять для 5-9 класів Української класичної гімназії."
 layout: "layouts/page.njk"
 bodyClass: "inner-page"
+section: "students"
 blocks:
   - type: alert_block
     alert_type: "info"

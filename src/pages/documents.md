@@ -3,6 +3,7 @@ title: "Документи закладу"
 description: "Офіційні документи Української класичної гімназії."
 layout: "layouts/page.njk"
 bodyClass: "inner-page"
+section: "about"
 blocks:
   - type: documents_block
     heading: "Документи закладу"

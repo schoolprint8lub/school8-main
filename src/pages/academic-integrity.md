@@ -3,6 +3,7 @@ title: "Академічна доброчесність"
 description: "Академічна доброчесність в Українській класичній гімназії."
 layout: "layouts/page.njk"
 bodyClass: "inner-page"
+section: "students"
 blocks:
   - type: text_block
     heading: "Що це таке?"

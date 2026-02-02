@@ -1,0 +1,239 @@
+[
+    {
+        "label": "🏠 Головна",
+        "url": "/",
+        "type": "link"
+    },
+    {
+        "label": "Про гімназію",
+        "type": "mega_dropdown",
+        "columns": [
+            {
+                "heading": "Адміністрація",
+                "links": [
+                    {
+                        "label": "👔 Управління",
+                        "url": "/management/"
+                    },
+                    {
+                        "label": "🔍 Прозорість",
+                        "url": "/prozorist/"
+                    },
+                    {
+                        "label": "📂 Документи",
+                        "url": "/documents/"
+                    },
+                    {
+                        "label": "📊 Самоаналіз",
+                        "url": "/samoanaliz/"
+                    },
+                    {
+                        "label": "🎖️ Атестація",
+                        "url": "/atestacia/"
+                    }
+                ]
+            },
+            {
+                "heading": "Спільноти",
+                "links": [
+                    {
+                        "label": "📜 Історія",
+                        "url": "/history/"
+                    },
+                    {
+                        "label": "👨‍🏫 Учителі",
+                        "url": "/teachers/"
+                    },
+                    {
+                        "label": "• Гуманітарні",
+                        "url": "/humanities/"
+                    },
+                    {
+                        "label": "• Природничі",
+                        "url": "/math-science/"
+                    },
+                    {
+                        "label": "• Мистецькі",
+                        "url": "/arts-health/"
+                    },
+                    {
+                        "label": "• Початкові",
+                        "url": "/primary-school/"
+                    },
+                    {
+                        "label": "• Класні керівники",
+                        "url": "/class-teachers/"
+                    }
+                ]
+            },
+            {
+                "heading": "Інформація",
+                "links": [
+                    {
+                        "label": "👥 Кадри",
+                        "url": "/staff/"
+                    },
+                    {
+                        "label": "💼 Вакансії",
+                        "url": "/vacancies/"
+                    },
+                    {
+                        "label": "⏰ Режим роботи",
+                        "url": "/working-mode/"
+                    },
+                    {
+                        "label": "📍 Контакти",
+                        "url": "/contacts/"
+                    },
+                    {
+                        "label": "📰 Facebook",
+                        "url": "https://www.facebook.com/p/%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D1%81%D1%8C%D0%BA%D0%B0-%D0%BA%D0%BB%D0%B0%D1%81%D0%B8%D1%87%D0%BD%D0%B0-%D0%B3%D1%96%D0%BC%D0%BD%D0%B0%D0%B7%D1%96%D1%8F-100076001883917/",
+                        "external": true
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "label": "Учням",
+        "type": "mega_dropdown",
+        "columns": [
+            {
+                "heading": "Початкова школа",
+                "links": [
+                    {
+                        "label": "🗓️ Розклад",
+                        "url": "/schedule-primary/"
+                    },
+                    {
+                        "label": "📚 Програми",
+                        "url": "/programs-primary/"
+                    },
+                    {
+                        "label": "📖 Підручники",
+                        "url": "/books-primary/"
+                    }
+                ]
+            },
+            {
+                "heading": "Середня школа",
+                "links": [
+                    {
+                        "label": "🗓️ Розклад",
+                        "url": "/schedule-middle/"
+                    },
+                    {
+                        "label": "📚 Програми",
+                        "url": "/programs-middle/"
+                    },
+                    {
+                        "label": "📖 Підручники",
+                        "url": "/books-middle/"
+                    }
+                ]
+            },
+            {
+                "heading": "Важливе",
+                "links": [
+                    {
+                        "label": "⚖️ Права",
+                        "url": "/rights-students/"
+                    },
+                    {
+                        "label": "🎓 Доброчесність",
+                        "url": "/academic-integrity/"
+                    },
+                    {
+                        "label": "💻 Щоденник",
+                        "url": "/electronic-diary/"
+                    },
+                    {
+                        "label": "🌐 Дистанційне",
+                        "url": "/distance-learning/"
+                    },
+                    {
+                        "label": "🌻 Виховна",
+                        "url": "/educational-work/"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "label": "Батькам",
+        "type": "simple_dropdown",
+        "links": [
+            {
+                "label": "⚖️ Права батьків",
+                "url": "/parents-rights/"
+            },
+            {
+                "label": "🗺️ Територія",
+                "url": "/territory/"
+            },
+            {
+                "label": "📝 Вступ",
+                "url": "/admission/"
+            },
+            {
+                "label": "ℹ️ Інформація",
+                "url": "/parents-info/"
+            }
+        ]
+    },
+    {
+        "label": "Життя",
+        "type": "simple_dropdown",
+        "links": [
+            {
+                "label": "🗳️ Самоврядування",
+                "url": "/student-government/"
+            },
+            {
+                "label": "🖨️ School Print",
+                "url": "https://schoolprint.netlify.app",
+                "external": true,
+                "highlight": true
+            },
+            {
+                "label": "🎨 Гуртки",
+                "url": "/circles/"
+            },
+            {
+                "label": "💡 Хакатон",
+                "url": "/hackathon/"
+            }
+        ]
+    },
+    {
+        "label": "Центри",
+        "type": "simple_dropdown",
+        "links": [
+            {
+                "label": "📚 Бібліотека",
+                "url": "/library/"
+            },
+            {
+                "label": "🧠 Психолог",
+                "url": "/psychologist/"
+            },
+            {
+                "label": "💙 Підтримка",
+                "url": "/psychology-support/"
+            },
+            {
+                "label": "🤝 Соц. педагог",
+                "url": "/social-pedagogue/"
+            },
+            {
+                "label": "🛑 Антибулінг",
+                "url": "/antibullying/",
+                "style": "color: #d32f2f;"
+            },
+            {
+                "label": "🏥 Медик",
+                "url": "/medical-service/"
+            }
+        ]
+    }
+]

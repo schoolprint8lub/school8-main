@@ -3,6 +3,7 @@ title: "Підручники (Середня школа)"
 description: "Електронні підручники для 5-9 класів."
 layout: "layouts/page.njk"
 bodyClass: "inner-page"
+section: "students"
 blocks:
   - type: alert_block
     alert_type: "info"

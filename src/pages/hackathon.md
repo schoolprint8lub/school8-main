@@ -3,6 +3,7 @@ title: "Освітній Хакатон 2025"
 description: "Освітній Хакатон 2025 - фестиваль партнерства з тематичними днями для учнів, батьків та вчителів"
 layout: "layouts/page.njk"
 bodyClass: "inner-page"
+section: "life"
 ---
 
 <div class="hackathon-hero">

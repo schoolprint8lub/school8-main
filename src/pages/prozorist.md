@@ -3,6 +3,7 @@ title: "Прозорість та відкритість"
 description: "Інформація про прозорість діяльності Української класичної гімназії."
 layout: "layouts/page.njk"
 bodyClass: "inner-page"
+section: "about"
 blocks:
   - type: links_block
     heading: ""

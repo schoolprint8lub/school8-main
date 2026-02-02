@@ -3,6 +3,7 @@ title: "Самоаналіз діяльності"
 description: "Результати самоаналізу освітньої діяльності Української класичної гімназії."
 layout: "layouts/page.njk"
 bodyClass: "inner-page"
+section: "about"
 blocks:
   - type: text_block
     heading: ""

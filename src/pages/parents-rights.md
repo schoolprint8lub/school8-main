@@ -3,6 +3,7 @@ title: "Права та обов'язки батьків"
 description: "Права та обов'язки батьків учнів Української класичної гімназії."
 layout: "layouts/page.njk"
 bodyClass: "inner-page"
+section: "parents"
 blocks:
   - type: text_block
     content: |

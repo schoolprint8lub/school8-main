@@ -3,6 +3,7 @@ title: "Професійна спільнота вчителів суспіль�
 description: "Професійна спільнота вчителів суспільно-гуманітарних наук."
 layout: "layouts/page.njk"
 bodyClass: "inner-page"
+section: "about"
 blocks:
   - type: cards_grid_block
     heading: ""

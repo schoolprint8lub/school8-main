@@ -3,6 +3,7 @@ title: "Соціальний педагог"
 description: "Соціально-психологічна служба Української класичної гімназії."
 layout: "layouts/page.njk"
 bodyClass: "inner-page"
+section: "centers"
 ---
 
 <h1 class="page-title">Соціально-психологічна служба</h1>

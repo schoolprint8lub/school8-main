@@ -3,6 +3,7 @@ title: "Виховна робота"
 description: "Виховна робота в Українській класичній гімназії."
 layout: "layouts/page.njk"
 bodyClass: "inner-page"
+section: "students"
 blocks:
   - type: text_block
     heading: ""

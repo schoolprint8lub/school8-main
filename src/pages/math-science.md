@@ -3,6 +3,7 @@ title: "Професійна спільнота вчителів природн�
 description: "Професійна спільнота вчителів природничо-математичних наук."
 layout: "layouts/page.njk"
 bodyClass: "inner-page"
+section: "about"
 blocks:
   - type: cards_grid_block
     heading: ""

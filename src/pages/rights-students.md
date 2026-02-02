@@ -3,6 +3,7 @@ title: "Права та обов'язки | Правила поведінки"
 description: "Декларація прав та обов'язків учасників освітнього процесу."
 layout: "layouts/page.njk"
 bodyClass: "inner-page"
+section: "students"
 blocks:
   - type: text_block
     content: |

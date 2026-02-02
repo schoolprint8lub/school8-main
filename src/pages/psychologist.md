@@ -3,6 +3,7 @@ title: "Практичний психолог"
 description: "Психологічна служба Української класичної гімназії."
 layout: "layouts/page.njk"
 bodyClass: "inner-page"
+section: "centers"
 ---
 
 <h1 class="page-title">Психологічна служба гімназії</h1>

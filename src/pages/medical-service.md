@@ -3,6 +3,7 @@ title: "Медична служба"
 description: "Медична служба Української класичної гімназії."
 layout: "layouts/page.njk"
 bodyClass: "inner-page"
+section: "centers"
 blocks:
   - type: image_text_block
     heading: "Мирненко Ольга Вікторівна"

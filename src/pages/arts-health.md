@@ -3,6 +3,7 @@ title: "Професійна спільнота вчителів художнь�
 description: "Професійна спільнота вчителів художньо-оздоровчого циклу."
 layout: "layouts/page.njk"
 bodyClass: "inner-page"
+section: "about"
 blocks:
   - type: cards_grid_block
     heading: ""

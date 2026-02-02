@@ -3,6 +3,7 @@ title: "Наявність вакантних посад"
 description: "Вакансії в Українській класичній гімназії."
 layout: "layouts/page.njk"
 bodyClass: "inner-page"
+section: "about"
 blocks:
   - type: card_block
     icon: "🚫"

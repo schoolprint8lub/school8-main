@@ -3,6 +3,7 @@ title: "Гуртки та секції"
 description: "Гуртки та секції в Українській класичній гімназії."
 layout: "layouts/page.njk"
 bodyClass: "inner-page"
+section: "life"
 blocks:
   - type: clubs_block
     heading: "Гуртки та секції"

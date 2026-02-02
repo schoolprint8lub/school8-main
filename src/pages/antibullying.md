@@ -3,6 +3,7 @@ title: "Антибулінгова компанія"
 description: "Політика протидії булінгу в Українській класичній гімназії."
 layout: "layouts/page.njk"
 bodyClass: "inner-page"
+section: "centers"
 ---
 
 <div class="page-header-alert">

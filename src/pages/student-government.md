@@ -3,6 +3,7 @@ title: "Учнівське самоврядування"
 description: "Учнівське самоврядування «ЛІДЕР» Української класичної гімназії."
 layout: "layouts/page.njk"
 bodyClass: "inner-page"
+section: "life"
 ---
 
 <h1 class="page-title">Учнівське самоврядування «ЛІДЕР»</h1>

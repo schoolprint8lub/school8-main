@@ -3,6 +3,7 @@ title: "Навчальні програми (5-9 класи)"
 description: "Перелік навчальних програм для 5-9 класів."
 layout: "layouts/page.njk"
 bodyClass: "inner-page"
+section: "students"
 blocks:
   - type: table_block
     heading: "5-6 класи (НУШ)"
