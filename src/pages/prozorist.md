@@ -12,7 +12,7 @@ blocks:
         url: "/documents/"
         external: false
       - icon: "📊"
-        title: "Звіти директора гімназії <span class='report-note'>(Натисніть для вибору)</span>"
+        title: "Звіти директора гімназії  (Натисніть для вибору)"
         url: "#reports-modal-trigger"
         external: false
       - icon: "🎓"
