@@ -250,25 +250,46 @@
            БЛОК: Сітка карток (для вчителів тощо)
            ---------------------------------- #}
         {% if block.type == "cards_grid_block" %}
-        <div class="staff-grid">
+        {% if block.heading %}
+            <h2 class="text-center mb-5">{{ block.heading }}</h2>
+        {% endif %}
+        <div class="card-grid">
           {% for card in block.cards %}
-          <div class="staff-card">
-            {% if card.image %}
-            <img src="{{ card.image }}" alt="{{ card.name }}" class="staff-photo" loading="lazy">
+          {% if card.link %}
+          <a href="{{ card.link }}" class="card {{ 'card-center' if card.center else '' }}" {% if card.border_color %}style="border-bottom-color: {{ card.border_color }};"{% endif %}>
+          {% else %}
+          <div class="card {{ 'card-center' if card.center else '' }}" {% if card.border_color %}style="border-bottom-color: {{ card.border_color }};"{% endif %}>
+          {% endif %}
+            {% if card.badge_top %}
+            <div class="class-badge-large">{{ card.badge_top }}</div>
             {% endif %}
-            <div class="staff-info">
-              <h3>{{ card.name }}</h3>
+            
+            {% if card.icon %}
+            <div class="card-icon">{{ card.icon }}</div>
+            {% elseif card.image %}
+            <img src="{{ card.image }}" alt="{{ card.name }}" class="card-photo" loading="lazy">
+            {% endif %}
+
+            <div class="card-content">
+              <div class="card-title">{{ card.name }}</div>
               {% if card.position %}
-              <p class="staff-position">{{ card.position }}</p>
+              <div class="card-subtitle">{{ card.position }}</div>
               {% endif %}
               {% if card.description %}
-              <p>{{ card.description }}</p>
+              <div class="card-desc">{{ card.description | safe }}</div>
               {% endif %}
             </div>
+          
+          {% if card.link %}
+          </a>
+          {% else %}
           </div>
+          {% endif %}
           {% endfor %}
+
         </div>
         {% endif %}
+
 
         {# ----------------------------------
            БЛОК: Таблиця
